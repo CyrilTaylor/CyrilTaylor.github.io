@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PowerShell详解 | 岁月静好</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Cyril Taylor,cyriltaylor,hexo,blog" />
+  
+  <meta name="description" content="1. 认识Powershell  1.1. 介绍和安装 1.2. 自定义控制台 1.3. 快速编辑模式和标准模式 1.4. 快捷键 1.5. 管道和重定向   2. Powershell交互式  2.1. 数学运算 2.2. 执行外部命令 2.3. 命令集 2.4. 别名 2.5. 通过函数扩展别名 2.6. 执行文件和脚本   3. Powershell变量  3.1. 定义变量 3.2.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PowerShell详解">
+<meta property="og:url" content="https://cyriltaylor.github.io/posts/4053355734/index.html">
+<meta property="og:site_name" content="岁月静好">
+<meta property="og:description" content="1. 认识Powershell  1.1. 介绍和安装 1.2. 自定义控制台 1.3. 快速编辑模式和标准模式 1.4. 快捷键 1.5. 管道和重定向   2. Powershell交互式  2.1. 数学运算 2.2. 执行外部命令 2.3. 命令集 2.4. 别名 2.5. 通过函数扩展别名 2.6. 执行文件和脚本   3. Powershell变量  3.1. 定义变量 3.2.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-17T02:30:16.000Z">
+<meta property="article:modified_time" content="2020-04-08T09:36:58.000Z">
+<meta property="article:author" content="Cyril Taylor">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css">
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+  
+<script src="../../js/pace.min.js"></script>
+
+  
+
+  
+  
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="../../index.html" class="left">
+                    <span class="site-title">积慧</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="../../index.html">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="../../archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="../../about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="../../index.html">
+                    <img src="../../images/logo.webp" alt="logo" width="130px" height="130px">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        积慧
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        卸下浮躁，保持宁静。
+心无旁骛，用心专注。
+脚踏实地，稳健向前。
+追求极致，享受其中。
+相扶相爱，群人共远。
+更高境地，漫步人生。
+
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Github" target="_blank" href="../../github.com/CyrilTaylor">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="微博" target="_blank" href="../../www.weibo.com/CyrilTaylor">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="邮箱"  href="../../mailto:CyrilTaylor@foxmail.com">
+                            <i class="fa fa-envelope fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-shell/PowerShell详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      <span class="article-type type-reprint">转</span>PowerShell详解
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2020-01-17
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+    <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2020年04月08日 09:36</p>
+
+        <p>原文链接： <a class="post-url" href="https://www.pstips.net/powershell-online-tutorials" title="PowerShell在线教程">https://www.pstips.net/powershell-online-tutorials</a></p>
+        <footer>
+
+
+
+                        <a href="https://www.pstips.net/author/mosser">
+
+                            <img src="g.jpg" alt="Mooser Lee">
+
+                            Mooser Lee
+                        </a>
+
+
+
+            <a href="https://cyriltaylor.github.io">
+                <img src="../../images/logo.webp" alt="Cyril Taylor">
+                Cyril Taylor
+            </a>
+        </footer>
+    </div>
+</div>
+
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <!-- TOC -->
+<ul>
+<li><a href="#1-%E8%AE%A4%E8%AF%86powershell">1. 认识Powershell</a>
+<ul>
+<li><a href="#11-%E4%BB%8B%E7%BB%8D%E5%92%8C%E5%AE%89%E8%A3%85">1.1. 介绍和安装</a></li>
+<li><a href="#12-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E5%88%B6%E5%8F%B0">1.2. 自定义控制台</a></li>
+<li><a href="#13-%E5%BF%AB%E9%80%9F%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E5%92%8C%E6%A0%87%E5%87%86%E6%A8%A1%E5%BC%8F">1.3. 快速编辑模式和标准模式</a></li>
+<li><a href="#14-%E5%BF%AB%E6%8D%B7%E9%94%AE">1.4. 快捷键</a></li>
+<li><a href="#15-%E7%AE%A1%E9%81%93%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91">1.5. 管道和重定向</a></li>
+</ul>
+</li>
+<li><a href="#2-powershell%E4%BA%A4%E4%BA%92%E5%BC%8F">2. Powershell交互式</a>
+<ul>
+<li><a href="#21-%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97">2.1. 数学运算</a></li>
+<li><a href="#22-%E6%89%A7%E8%A1%8C%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4">2.2. 执行外部命令</a></li>
+<li><a href="#23-%E5%91%BD%E4%BB%A4%E9%9B%86">2.3. 命令集</a></li>
+<li><a href="#24-%E5%88%AB%E5%90%8D">2.4. 别名</a></li>
+<li><a href="#25-%E9%80%9A%E8%BF%87%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95%E5%88%AB%E5%90%8D">2.5. 通过函数扩展别名</a></li>
+<li><a href="#26-%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E5%92%8C%E8%84%9A%E6%9C%AC">2.6. 执行文件和脚本</a></li>
+</ul>
+</li>
+<li><a href="#3-powershell%E5%8F%98%E9%87%8F">3. Powershell变量</a>
+<ul>
+<li><a href="#31-%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F">3.1. 定义变量</a></li>
+<li><a href="#32-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8F%98%E9%87%8F">3.2. 自动化变量</a></li>
+<li><a href="#33-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">3.3. 环境变量</a></li>
+<li><a href="#34-%E9%A9%B1%E5%8A%A8%E5%99%A8%E5%8F%98%E9%87%8F">3.4. 驱动器变量</a></li>
+<li><a href="#35-%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F">3.5. 变量的作用域</a></li>
+<li><a href="#36-%E5%8F%98%E9%87%8F%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%BA%E7%B1%BB%E5%9E%8B">3.6. 变量的类型和强类型</a></li>
+<li><a href="#37-%E5%8F%98%E9%87%8F%E7%9A%84%E5%B9%95%E5%90%8E%E7%AE%A1%E7%90%86">3.7. 变量的幕后管理</a></li>
+</ul>
+</li>
+<li><a href="#4-powershell%E6%95%B0%E7%BB%84%E5%92%8C%E5%93%88%E5%B8%8C%E8%A1%A8">4. Powershell数组和哈希表</a>
+<ul>
+<li><a href="#41-%E5%91%BD%E4%BB%A4%E8%BF%94%E5%9B%9E%E6%95%B0%E7%BB%84">4.1. 命令返回数组</a></li>
+<li><a href="#42-%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84">4.2. 创建数组</a></li>
+<li><a href="#43-%E8%AE%BF%E9%97%AE%E6%95%B0%E7%BB%84">4.3. 访问数组</a></li>
+<li><a href="#44-%E5%A4%8D%E5%88%B6%E6%95%B0%E7%BB%84">4.4. 复制数组</a></li>
+<li><a href="#45-%E5%BC%BA%E7%B1%BB%E5%9E%8B%E6%95%B0%E7%BB%84">4.5. 强类型数组</a></li>
+<li><a href="#46-%E4%BD%BF%E7%94%A8%E5%93%88%E5%B8%8C%E8%A1%A8">4.6. 使用哈希表</a></li>
+</ul>
+</li>
+<li><a href="#5-powershell%E7%AE%A1%E9%81%93">5. Powershell管道</a>
+<ul>
+<li><a href="#51-%E4%BD%BF%E7%94%A8%E7%AE%A1%E9%81%93">5.1. 使用管道</a></li>
+<li><a href="#52-%E5%AF%B9%E8%B1%A1%E8%BD%AC%E6%8D%A2%E6%88%90%E6%96%87%E6%9C%AC">5.2. 对象转换成文本</a></li>
+<li><a href="#53-%E6%8E%92%E5%BA%8F%E5%92%8C%E5%88%86%E7%BB%84">5.3. 排序和分组</a></li>
+<li><a href="#54-%E8%BF%87%E6%BB%A4%E7%AE%A1%E9%81%93%E7%BB%93%E6%9E%9C">5.4. 过滤管道结果</a></li>
+<li><a href="#55-%E5%88%86%E6%9E%90%E5%92%8C%E6%AF%94%E8%BE%83%E7%AE%A1%E9%81%93%E7%BB%93%E6%9E%9C">5.5. 分析和比较管道结果</a></li>
+<li><a href="#56-%E5%AF%BC%E5%87%BA%E7%AE%A1%E9%81%93%E7%BB%93%E6%9E%9C">5.6. 导出管道结果</a></li>
+<li><a href="#57-%E6%89%A9%E5%B1%95%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F">5.7. 扩展类型系统</a></li>
+</ul>
+</li>
+<li><a href="#6-powershell%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1">6. Powershell使用对象</a>
+<ul>
+<li><a href="#61-%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E6%96%B9%E6%B3%95">6.1. 对象=属性+方法</a></li>
+<li><a href="#62-%E5%B1%9E%E6%80%A7%E5%AF%B9%E8%B1%A1%E6%98%AF%E4%BB%80%E4%B9%88">6.2. 属性（对象是什么）</a></li>
+<li><a href="#63-%E6%96%B9%E6%B3%95%E5%AF%B9%E8%B1%A1%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88">6.3. 方法（对象能做什么）</a></li>
+<li><a href="#64-%E4%BD%BF%E7%94%A8%E7%9C%9F%E5%AE%9E%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B7%A5%E4%BD%9C">6.4. 使用真实的对象工作</a></li>
+<li><a href="#65-%E8%B0%83%E7%94%A8%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95">6.5. 调用静态方法</a></li>
+<li><a href="#66-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1">6.6. 创建对象</a></li>
+</ul>
+</li>
+<li><a href="#7-powershell%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD">7. Powershell条件判断</a>
+<ul>
+<li><a href="#71-%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F">7.1. 条件表达式</a></li>
+<li><a href="#72-where-object">7.2. Where-Object</a></li>
+<li><a href="#73-if-elseif-else">7.3. IF-ElseIf-Else</a></li>
+<li><a href="#74-switch">7.4. Switch</a></li>
+</ul>
+</li>
+<li><a href="#8-powershell%E5%BE%AA%E7%8E%AF">8. Powershell循环</a>
+<ul>
+<li><a href="#81-foreach-object">8.1. ForEach-Object</a></li>
+<li><a href="#82-foreach">8.2. Foreach</a></li>
+<li><a href="#83-do-while">8.3. Do While</a></li>
+<li><a href="#84-for">8.4. For</a></li>
+<li><a href="#85-switch">8.5. Switch</a></li>
+</ul>
+</li>
+<li><a href="#9-powershell%E5%87%BD%E6%95%B0">9. Powershell函数</a>
+<ul>
+<li><a href="#91-%E5%AE%9A%E4%B9%89%E6%96%B0%E5%87%BD%E6%95%B0">9.1. 定义新函数</a></li>
+<li><a href="#92-%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0">9.2. 处理函数的参数</a></li>
+<li><a href="#93-%E6%8C%87%E5%AE%9A%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC">9.3. 指定函数的返回值</a></li>
+<li><a href="#94-%E6%9F%A5%E7%9C%8B%E6%94%AF%E6%8C%81%E7%9A%84%E5%87%BD%E6%95%B0">9.4. 查看支持的函数</a></li>
+<li><a href="#95-%E5%87%BD%E6%95%B0-%E8%BF%87%E6%BB%A4%E5%99%A8-%E7%AE%A1%E9%81%93">9.5. 函数 过滤器 管道</a></li>
+</ul>
+</li>
+<li><a href="#10-powershell%E8%84%9A%E6%9C%AC">10. Powershell脚本</a>
+<ul>
+<li><a href="#101-%E7%BC%96%E5%86%99%E5%92%8C%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC">10.1. 编写和运行脚本</a></li>
+<li><a href="#102-%E7%BB%99%E8%84%9A%E6%9C%AC%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0">10.2. 给脚本传递参数</a></li>
+<li><a href="#103-%E5%A2%9E%E5%BC%BA%E8%84%9A%E6%9C%AC%E7%9A%84%E5%8F%AF%E8%AF%BB%E6%80%A7">10.3. 增强脚本的可读性</a></li>
+<li><a href="#104-%E5%88%9B%E5%BB%BA%E7%AE%A1%E9%81%93%E8%84%9A%E6%9C%AC">10.4. 创建管道脚本</a></li>
+<li><a href="#105-%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC%E4%B9%8Bprofile">10.5. 自动执行脚本之profile</a></li>
+<li><a href="#106-%E8%84%9A%E6%9C%AC%E7%9A%84%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D">10.6. 脚本的数字签名</a></li>
+</ul>
+</li>
+<li><a href="#11-powershell%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86">11. Powershell错误处理</a>
+<ul>
+<li><a href="#111-what-if">11.1. what-if</a></li>
+<li><a href="#112-%E5%AE%9A%E4%B9%89%E5%AE%B9%E9%94%99%E5%BA%A6">11.2. 定义容错度</a></li>
+<li><a href="#113-%E8%AF%86%E5%88%AB%E5%92%8C%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8">11.3. 识别和处理异常</a></li>
+<li><a href="#114-%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95%E8%AF%A6%E7%BB%86%E9%94%99%E8%AF%AF">11.4. 错误记录:详细错误</a></li>
+<li><a href="#115-%E7%90%86%E8%A7%A3%E5%BC%82%E5%B8%B8">11.5. 理解异常</a></li>
+<li><a href="#116-%E5%9C%A8%E5%87%BD%E6%95%B0%E5%92%8C%E8%84%9A%E6%9C%AC%E4%B8%AD%E6%8D%95%E8%8E%B7%E5%BC%82%E5%B8%B8">11.6. 在函数和脚本中捕获异常</a></li>
+<li><a href="#117-%E6%96%AD%E7%82%B9%E6%89%A7%E8%A1%8C">11.7. 断点执行</a></li>
+</ul>
+</li>
+<li><a href="#12-powershell%E5%91%BD%E4%BB%A4%E5%8F%91%E7%8E%B0%E5%92%8C%E8%84%9A%E6%9C%AC%E5%9D%97">12. Powershell命令发现和脚本块</a>
+<ul>
+<li><a href="#121-%E5%8F%91%E7%8E%B0%E5%91%BD%E4%BB%A4">12.1. 发现命令</a></li>
+<li><a href="#122-%E8%B0%83%E7%94%A8%E6%93%8D%E4%BD%9C%E7%AC%A6">12.2. 调用操作符</a></li>
+<li><a href="#123-%E4%BD%BF%E7%94%A8%E8%AF%AD%E5%8F%A5%E5%9D%97">12.3. 使用语句块</a></li>
+<li><a href="#124-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87">12.4. 执行上下文</a></li>
+</ul>
+</li>
+<li><a href="#13-powershell%E6%96%87%E6%9C%AC%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">13. Powershell文本和正则表达式</a>
+<ul>
+<li><a href="#131-%E5%AE%9A%E4%B9%89%E6%96%87%E6%9C%AC">13.1. 定义文本</a></li>
+<li><a href="#132-%E4%BD%BF%E7%94%A8%E7%89%B9%E6%AE%8A%E6%96%87%E6%9C%AC%E5%91%BD%E4%BB%A4">13.2. 使用特殊文本命令</a>
+<ul>
+<li><a href="#1321-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E7%AC%A6">13.2.1. 字符串操作符</a>
+<ul>
+<li><a href="#13211-%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2">13.2.1.1. 格式化字符串</a></li>
+<li><a href="#13212-%E8%AE%BE%E7%BD%AE%E6%95%B0%E5%AD%97%E6%A0%BC%E5%BC%8F">13.2.1.2. 设置数字格式</a></li>
+<li><a href="#13213-%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%E7%9A%84%E5%88%B6%E8%A1%A8%E8%BE%93%E5%87%BA">13.2.1.3. 固定宽度的制表输出</a></li>
+</ul>
+</li>
+<li><a href="#1322-string-%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95">13.2.2. String 对象方法</a></li>
+<li><a href="#1323-string-%E7%B1%BB%E6%96%B9%E6%96%B9%E6%B3%95">13.2.3. String 类方方法</a></li>
+<li><a href="#1324-%E7%AE%80%E5%8D%95%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D">13.2.4. 简单模式匹配</a></li>
+</ul>
+</li>
+<li><a href="#133-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">13.3. 正则表达式</a>
+<ul>
+<li><a href="#1331-%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%BC%8F">13.3.1. 定义模式</a></li>
+<li><a href="#1332-%E5%90%8C%E6%97%B6%E6%90%9C%E7%B4%A2%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AF%8D%E8%AF%AD">13.3.2. 同时搜索不同的词语</a></li>
+<li><a href="#1333-%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F">13.3.3. 大小写敏感</a></li>
+<li><a href="#1334-%E5%9C%A8%E6%96%87%E6%9C%AC%E4%B8%AD%E6%90%9C%E7%B4%A2%E4%BF%A1%E6%81%AF">13.3.4. 在文本中搜索信息</a></li>
+<li><a href="#1335-%E6%90%9C%E7%B4%A2%E4%B8%8D%E5%90%8C%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97">13.3.5. 搜索不同的关键字</a></li>
+<li><a href="#1336-%E7%BB%84">13.3.6. 组</a></li>
+<li><a href="#1337-%E6%B7%B1%E5%85%A5%E4%BD%BF%E7%94%A8%E5%AD%90%E8%A1%A8%E8%BE%BE%E5%BC%8F">13.3.7. 深入使用子表达式</a></li>
+<li><a href="#1338-%E8%B4%AA%E5%A9%AA%E4%B8%8E%E9%9D%9E%E8%B4%AA%E5%A9%AA%E5%8C%B9%E9%85%8D">13.3.8. 贪婪与非贪婪匹配</a></li>
+<li><a href="#1339-%E6%90%9C%E7%B4%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%89%87%E6%AE%B5">13.3.9. 搜索字符串片段</a></li>
+<li><a href="#13310-%E6%9B%BF%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2">13.3.10. 替换字符串</a></li>
+<li><a href="#13311-%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%90%91%E5%BC%95%E7%94%A8">13.3.11. 使用反向引用</a></li>
+<li><a href="#13312-%E5%9C%A8%E6%96%87%E6%9C%AC%E8%A1%8C%E7%9A%84%E5%BC%80%E5%A7%8B%E6%8F%92%E5%85%A5%E6%96%87%E6%9C%AC">13.3.12. 在文本行的开始插入文本</a></li>
+<li><a href="#13313-%E5%88%A0%E9%99%A4%E5%A4%9A%E4%BD%99%E7%9A%84%E7%A9%BA%E6%A0%BC">13.3.13. 删除多余的空格</a></li>
+<li><a href="#13314-%E6%90%9C%E7%B4%A2%E5%92%8C%E7%A7%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E5%8D%95%E8%AF%8D">13.3.14. 搜索和移除重复的单词</a></li>
+<li><a href="#13315-%E9%9D%9E%E6%8D%95%E8%8E%B7%E7%BB%84">13.3.15. 非捕获组</a></li>
+</ul>
+</li>
+<li><a href="#134-%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E5%AE%9E%E4%BE%8B">13.4. 文本处理实例</a>
+<ul>
+<li><a href="#1341-%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E5%AE%9E%E4%BE%8B%E4%B8%80">13.4.1. 文本处理实例（一）</a></li>
+<li><a href="#1342-%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E5%AE%9E%E4%BE%8B%E4%BA%8C">13.4.2. 文本处理实例（二）</a></li>
+<li><a href="#1343-%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E5%AE%9E%E4%BE%8B%E4%B8%89">13.4.3. 文本处理实例（三）</a></li>
+<li><a href="#1344-%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E5%AE%9E%E4%BE%8B%E5%9B%9B">13.4.4. 文本处理实例（四）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#14-powershell%E5%A4%84%E7%90%86xml">14. PowerShell处理XML</a>
+<ul>
+<li><a href="#141-xml-%E7%BB%93%E6%9E%84">14.1. XML 结构</a></li>
+<li><a href="#142-%E5%8A%A0%E8%BD%BD%E5%92%8C%E5%A4%84%E7%90%86xml%E6%96%87%E4%BB%B6">14.2. 加载和处理XML文件</a></li>
+<li><a href="#143-%E6%B5%8F%E8%A7%88%E6%89%A9%E5%B1%95%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F">14.3. 浏览扩展类型系统</a></li>
+</ul>
+</li>
+<li><a href="#15-powershell%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">15. PowerShell文件系统</a>
+<ul>
+<li><a href="#151-%E5%89%8D%E8%A8%80">15.1. 前言</a></li>
+<li><a href="#152-%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95">15.2. 访问文件和目录</a></li>
+<li><a href="#153-%E5%AF%BC%E8%88%AA%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">15.3. 导航文件系统</a></li>
+<li><a href="#154-%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E5%B7%A5%E4%BD%9C">15.4. 使用目录和文件工作</a></li>
+<li><a href="#155-%E7%AE%A1%E7%90%86%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90">15.5. 管理访问权限</a></li>
+</ul>
+</li>
+<li><a href="#16-powershell%E6%B3%A8%E5%86%8C%E8%A1%A8">16. PowerShell注册表</a>
+<ul>
+<li><a href="#161-%E6%93%8D%E4%BD%9C%E6%B3%A8%E5%86%8C%E8%A1%A8%E7%9A%84%E5%87%A0%E6%9D%A1%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4">16.1. 操作注册表的几条重要命令</a></li>
+<li><a href="#162-%E6%8F%90%E4%BE%9B%E7%A8%8B%E5%BA%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%BB%A5%E5%A4%96%E7%9A%84%E4%BD%8D%E7%BD%AE">16.2. “提供程序”文件系统以外的位置</a></li>
+<li><a href="#163-%E6%90%9C%E7%B4%A2%E6%B3%A8%E5%86%8C%E8%A1%A8">16.3. 搜索注册表</a></li>
+<li><a href="#164-%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4%E9%94%AE%E5%80%BC">16.4. 创建和删除键值</a></li>
+<li><a href="#165-%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%9D%83%E9%99%90">16.5. 注册表权限</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<a id="more"></a>
+<h2 id="1-认识powershell"><a class="markdownIt-Anchor" href="#1-认识powershell"></a> 1. 认识Powershell</h2>
+<h3 id="11-介绍和安装"><a class="markdownIt-Anchor" href="#11-介绍和安装"></a> 1.1. 介绍和安装</h3>
+<p>Powershell 是运行在windows机器上实现系统和应用程序管理自动化的命令行脚本环境。你可以把它看成是命令行提示符cmd.exe的扩充，不对，应当是颠覆。 powershell需要.NET环境的支持，同时支持.NET对象。微软之所以将Powershell 定位为Power，并不是夸大其词，因为它完全支持对象。其可读性，易用性，可以位居当前所有shell之首。 当前powershell有四版本，分别为1.0，2.0，3.0 ,4.0</p>
+<ul>
+<li>
+<p>如果您的系统是window7或者Windows Server 2008，那么PowerShell 2.0已经内置了，可以升级为3.0，4.0。</p>
+</li>
+<li>
+<p>如果您的系统是Windows 8 或者Windows server 2012，那么PowerShell 3.0已经内置了，可以升级为4.0。</p>
+</li>
+<li>
+<p>如果您的系统为Windows 8.1或者Windows server 2012 R2，那默认已经是4.0了。</p>
+</li>
+<li>
+<p><a href="http://www.microsoft.com/downloads/zh-cn/details.aspx?displaylang=zh-cn&amp;FamilyID=30125a46-b97c-4704-aa10-605e809d5933">Powershell 1.0 下载地址</a></p>
+</li>
+<li>
+<p><a href="http://www.microsoft.com/download/en/details.aspx?id=9864">Powershell 2.0 下载地址</a></p>
+</li>
+<li>
+<p>powershell3.0 <a href="https://www.pstips.net/powershell-version-3.html">介绍</a>,<a href="http://www.microsoft.com/en-us/download/details.aspx?id=34595">下载</a></p>
+</li>
+<li>
+<p>powershell4.0 <a href="https://www.pstips.net/windows-management-framework-4-0-is-now-available.html">介绍</a>,<a href="http://www.microsoft.com/en-us/download/details.aspx?id=40855">下载</a></p>
+</li>
+</ul>
+<h3 id="12-自定义控制台"><a class="markdownIt-Anchor" href="#12-自定义控制台"></a> 1.2. 自定义控制台</h3>
+<h3 id="13-快速编辑模式和标准模式"><a class="markdownIt-Anchor" href="#13-快速编辑模式和标准模式"></a> 1.3. 快速编辑模式和标准模式</h3>
+<h3 id="14-快捷键"><a class="markdownIt-Anchor" href="#14-快捷键"></a> 1.4. 快捷键</h3>
+<h3 id="15-管道和重定向"><a class="markdownIt-Anchor" href="#15-管道和重定向"></a> 1.5. 管道和重定向</h3>
+<h2 id="2-powershell交互式"><a class="markdownIt-Anchor" href="#2-powershell交互式"></a> 2. Powershell交互式</h2>
+<h3 id="21-数学运算"><a class="markdownIt-Anchor" href="#21-数学运算"></a> 2.1. 数学运算</h3>
+<h3 id="22-执行外部命令"><a class="markdownIt-Anchor" href="#22-执行外部命令"></a> 2.2. 执行外部命令</h3>
+<h3 id="23-命令集"><a class="markdownIt-Anchor" href="#23-命令集"></a> 2.3. 命令集</h3>
+<h3 id="24-别名"><a class="markdownIt-Anchor" href="#24-别名"></a> 2.4. 别名</h3>
+<h3 id="25-通过函数扩展别名"><a class="markdownIt-Anchor" href="#25-通过函数扩展别名"></a> 2.5. 通过函数扩展别名</h3>
+<h3 id="26-执行文件和脚本"><a class="markdownIt-Anchor" href="#26-执行文件和脚本"></a> 2.6. 执行文件和脚本</h3>
+<h2 id="3-powershell变量"><a class="markdownIt-Anchor" href="#3-powershell变量"></a> 3. Powershell变量</h2>
+<h3 id="31-定义变量"><a class="markdownIt-Anchor" href="#31-定义变量"></a> 3.1. 定义变量</h3>
+<h3 id="32-自动化变量"><a class="markdownIt-Anchor" href="#32-自动化变量"></a> 3.2. 自动化变量</h3>
+<h3 id="33-环境变量"><a class="markdownIt-Anchor" href="#33-环境变量"></a> 3.3. 环境变量</h3>
+<h3 id="34-驱动器变量"><a class="markdownIt-Anchor" href="#34-驱动器变量"></a> 3.4. 驱动器变量</h3>
+<h3 id="35-变量的作用域"><a class="markdownIt-Anchor" href="#35-变量的作用域"></a> 3.5. 变量的作用域</h3>
+<h3 id="36-变量的类型和强类型"><a class="markdownIt-Anchor" href="#36-变量的类型和强类型"></a> 3.6. 变量的类型和强类型</h3>
+<h3 id="37-变量的幕后管理"><a class="markdownIt-Anchor" href="#37-变量的幕后管理"></a> 3.7. 变量的幕后管理</h3>
+<h2 id="4-powershell数组和哈希表"><a class="markdownIt-Anchor" href="#4-powershell数组和哈希表"></a> 4. Powershell数组和哈希表</h2>
+<h3 id="41-命令返回数组"><a class="markdownIt-Anchor" href="#41-命令返回数组"></a> 4.1. 命令返回数组</h3>
+<h3 id="42-创建数组"><a class="markdownIt-Anchor" href="#42-创建数组"></a> 4.2. 创建数组</h3>
+<h3 id="43-访问数组"><a class="markdownIt-Anchor" href="#43-访问数组"></a> 4.3. 访问数组</h3>
+<h3 id="44-复制数组"><a class="markdownIt-Anchor" href="#44-复制数组"></a> 4.4. 复制数组</h3>
+<h3 id="45-强类型数组"><a class="markdownIt-Anchor" href="#45-强类型数组"></a> 4.5. 强类型数组</h3>
+<h3 id="46-使用哈希表"><a class="markdownIt-Anchor" href="#46-使用哈希表"></a> 4.6. 使用哈希表</h3>
+<h2 id="5-powershell管道"><a class="markdownIt-Anchor" href="#5-powershell管道"></a> 5. Powershell管道</h2>
+<h3 id="51-使用管道"><a class="markdownIt-Anchor" href="#51-使用管道"></a> 5.1. 使用管道</h3>
+<h3 id="52-对象转换成文本"><a class="markdownIt-Anchor" href="#52-对象转换成文本"></a> 5.2. 对象转换成文本</h3>
+<h3 id="53-排序和分组"><a class="markdownIt-Anchor" href="#53-排序和分组"></a> 5.3. 排序和分组</h3>
+<h3 id="54-过滤管道结果"><a class="markdownIt-Anchor" href="#54-过滤管道结果"></a> 5.4. 过滤管道结果</h3>
+<h3 id="55-分析和比较管道结果"><a class="markdownIt-Anchor" href="#55-分析和比较管道结果"></a> 5.5. 分析和比较管道结果</h3>
+<h3 id="56-导出管道结果"><a class="markdownIt-Anchor" href="#56-导出管道结果"></a> 5.6. 导出管道结果</h3>
+<h3 id="57-扩展类型系统"><a class="markdownIt-Anchor" href="#57-扩展类型系统"></a> 5.7. 扩展类型系统</h3>
+<h2 id="6-powershell使用对象"><a class="markdownIt-Anchor" href="#6-powershell使用对象"></a> 6. Powershell使用对象</h2>
+<h3 id="61-对象属性方法"><a class="markdownIt-Anchor" href="#61-对象属性方法"></a> 6.1. 对象=属性+方法</h3>
+<h3 id="62-属性对象是什么"><a class="markdownIt-Anchor" href="#62-属性对象是什么"></a> 6.2. 属性（对象是什么）</h3>
+<h3 id="63-方法对象能做什么"><a class="markdownIt-Anchor" href="#63-方法对象能做什么"></a> 6.3. 方法（对象能做什么）</h3>
+<h3 id="64-使用真实的对象工作"><a class="markdownIt-Anchor" href="#64-使用真实的对象工作"></a> 6.4. 使用真实的对象工作</h3>
+<h3 id="65-调用静态方法"><a class="markdownIt-Anchor" href="#65-调用静态方法"></a> 6.5. 调用静态方法</h3>
+<h3 id="66-创建对象"><a class="markdownIt-Anchor" href="#66-创建对象"></a> 6.6. 创建对象</h3>
+<h2 id="7-powershell条件判断"><a class="markdownIt-Anchor" href="#7-powershell条件判断"></a> 7. Powershell条件判断</h2>
+<h3 id="71-条件表达式"><a class="markdownIt-Anchor" href="#71-条件表达式"></a> 7.1. 条件表达式</h3>
+<h3 id="72-where-object"><a class="markdownIt-Anchor" href="#72-where-object"></a> 7.2. Where-Object</h3>
+<h3 id="73-if-elseif-else"><a class="markdownIt-Anchor" href="#73-if-elseif-else"></a> 7.3. IF-ElseIf-Else</h3>
+<h3 id="74-switch"><a class="markdownIt-Anchor" href="#74-switch"></a> 7.4. Switch</h3>
+<h2 id="8-powershell循环"><a class="markdownIt-Anchor" href="#8-powershell循环"></a> 8. Powershell循环</h2>
+<h3 id="81-foreach-object"><a class="markdownIt-Anchor" href="#81-foreach-object"></a> 8.1. ForEach-Object</h3>
+<h3 id="82-foreach"><a class="markdownIt-Anchor" href="#82-foreach"></a> 8.2. Foreach</h3>
+<h3 id="83-do-while"><a class="markdownIt-Anchor" href="#83-do-while"></a> 8.3. Do While</h3>
+<h3 id="84-for"><a class="markdownIt-Anchor" href="#84-for"></a> 8.4. For</h3>
+<h3 id="85-switch"><a class="markdownIt-Anchor" href="#85-switch"></a> 8.5. Switch</h3>
+<h2 id="9-powershell函数"><a class="markdownIt-Anchor" href="#9-powershell函数"></a> 9. Powershell函数</h2>
+<h3 id="91-定义新函数"><a class="markdownIt-Anchor" href="#91-定义新函数"></a> 9.1. 定义新函数</h3>
+<h3 id="92-处理函数的参数"><a class="markdownIt-Anchor" href="#92-处理函数的参数"></a> 9.2. 处理函数的参数</h3>
+<h3 id="93-指定函数的返回值"><a class="markdownIt-Anchor" href="#93-指定函数的返回值"></a> 9.3. 指定函数的返回值</h3>
+<h3 id="94-查看支持的函数"><a class="markdownIt-Anchor" href="#94-查看支持的函数"></a> 9.4. 查看支持的函数</h3>
+<h3 id="95-函数-过滤器-管道"><a class="markdownIt-Anchor" href="#95-函数-过滤器-管道"></a> 9.5. 函数 过滤器 管道</h3>
+<h2 id="10-powershell脚本"><a class="markdownIt-Anchor" href="#10-powershell脚本"></a> 10. Powershell脚本</h2>
+<h3 id="101-编写和运行脚本"><a class="markdownIt-Anchor" href="#101-编写和运行脚本"></a> 10.1. 编写和运行脚本</h3>
+<h3 id="102-给脚本传递参数"><a class="markdownIt-Anchor" href="#102-给脚本传递参数"></a> 10.2. 给脚本传递参数</h3>
+<h3 id="103-增强脚本的可读性"><a class="markdownIt-Anchor" href="#103-增强脚本的可读性"></a> 10.3. 增强脚本的可读性</h3>
+<h3 id="104-创建管道脚本"><a class="markdownIt-Anchor" href="#104-创建管道脚本"></a> 10.4. 创建管道脚本</h3>
+<h3 id="105-自动执行脚本之profile"><a class="markdownIt-Anchor" href="#105-自动执行脚本之profile"></a> 10.5. 自动执行脚本之profile</h3>
+<h3 id="106-脚本的数字签名"><a class="markdownIt-Anchor" href="#106-脚本的数字签名"></a> 10.6. 脚本的数字签名</h3>
+<h2 id="11-powershell错误处理"><a class="markdownIt-Anchor" href="#11-powershell错误处理"></a> 11. Powershell错误处理</h2>
+<h3 id="111-what-if"><a class="markdownIt-Anchor" href="#111-what-if"></a> 11.1. what-if</h3>
+<h3 id="112-定义容错度"><a class="markdownIt-Anchor" href="#112-定义容错度"></a> 11.2. 定义容错度</h3>
+<h3 id="113-识别和处理异常"><a class="markdownIt-Anchor" href="#113-识别和处理异常"></a> 11.3. 识别和处理异常</h3>
+<h3 id="114-错误记录详细错误"><a class="markdownIt-Anchor" href="#114-错误记录详细错误"></a> 11.4. 错误记录:详细错误</h3>
+<h3 id="115-理解异常"><a class="markdownIt-Anchor" href="#115-理解异常"></a> 11.5. 理解异常</h3>
+<h3 id="116-在函数和脚本中捕获异常"><a class="markdownIt-Anchor" href="#116-在函数和脚本中捕获异常"></a> 11.6. 在函数和脚本中捕获异常</h3>
+<h3 id="117-断点执行"><a class="markdownIt-Anchor" href="#117-断点执行"></a> 11.7. 断点执行</h3>
+<h2 id="12-powershell命令发现和脚本块"><a class="markdownIt-Anchor" href="#12-powershell命令发现和脚本块"></a> 12. Powershell命令发现和脚本块</h2>
+<h3 id="121-发现命令"><a class="markdownIt-Anchor" href="#121-发现命令"></a> 12.1. 发现命令</h3>
+<h3 id="122-调用操作符"><a class="markdownIt-Anchor" href="#122-调用操作符"></a> 12.2. 调用操作符</h3>
+<h3 id="123-使用语句块"><a class="markdownIt-Anchor" href="#123-使用语句块"></a> 12.3. 使用语句块</h3>
+<h3 id="124-执行上下文"><a class="markdownIt-Anchor" href="#124-执行上下文"></a> 12.4. 执行上下文</h3>
+<h2 id="13-powershell文本和正则表达式"><a class="markdownIt-Anchor" href="#13-powershell文本和正则表达式"></a> 13. Powershell文本和正则表达式</h2>
+<h3 id="131-定义文本"><a class="markdownIt-Anchor" href="#131-定义文本"></a> 13.1. 定义文本</h3>
+<h3 id="132-使用特殊文本命令"><a class="markdownIt-Anchor" href="#132-使用特殊文本命令"></a> 13.2. 使用特殊文本命令</h3>
+<h4 id="1321-字符串操作符"><a class="markdownIt-Anchor" href="#1321-字符串操作符"></a> 13.2.1. 字符串操作符</h4>
+<h5 id="13211-格式化字符串"><a class="markdownIt-Anchor" href="#13211-格式化字符串"></a> 13.2.1.1. 格式化字符串</h5>
+<h5 id="13212-设置数字格式"><a class="markdownIt-Anchor" href="#13212-设置数字格式"></a> 13.2.1.2. 设置数字格式</h5>
+<h5 id="13213-固定宽度的制表输出"><a class="markdownIt-Anchor" href="#13213-固定宽度的制表输出"></a> 13.2.1.3. 固定宽度的制表输出</h5>
+<h4 id="1322-string-对象方法"><a class="markdownIt-Anchor" href="#1322-string-对象方法"></a> 13.2.2. String 对象方法</h4>
+<h4 id="1323-string-类方方法"><a class="markdownIt-Anchor" href="#1323-string-类方方法"></a> 13.2.3. String 类方方法</h4>
+<h4 id="1324-简单模式匹配"><a class="markdownIt-Anchor" href="#1324-简单模式匹配"></a> 13.2.4. 简单模式匹配</h4>
+<h3 id="133-正则表达式"><a class="markdownIt-Anchor" href="#133-正则表达式"></a> 13.3. 正则表达式</h3>
+<h4 id="1331-定义模式"><a class="markdownIt-Anchor" href="#1331-定义模式"></a> 13.3.1. 定义模式</h4>
+<h4 id="1332-同时搜索不同的词语"><a class="markdownIt-Anchor" href="#1332-同时搜索不同的词语"></a> 13.3.2. 同时搜索不同的词语</h4>
+<h4 id="1333-大小写敏感"><a class="markdownIt-Anchor" href="#1333-大小写敏感"></a> 13.3.3. 大小写敏感</h4>
+<h4 id="1334-在文本中搜索信息"><a class="markdownIt-Anchor" href="#1334-在文本中搜索信息"></a> 13.3.4. 在文本中搜索信息</h4>
+<h4 id="1335-搜索不同的关键字"><a class="markdownIt-Anchor" href="#1335-搜索不同的关键字"></a> 13.3.5. 搜索不同的关键字</h4>
+<h4 id="1336-组"><a class="markdownIt-Anchor" href="#1336-组"></a> 13.3.6. 组</h4>
+<h4 id="1337-深入使用子表达式"><a class="markdownIt-Anchor" href="#1337-深入使用子表达式"></a> 13.3.7. 深入使用子表达式</h4>
+<h4 id="1338-贪婪与非贪婪匹配"><a class="markdownIt-Anchor" href="#1338-贪婪与非贪婪匹配"></a> 13.3.8. 贪婪与非贪婪匹配</h4>
+<h4 id="1339-搜索字符串片段"><a class="markdownIt-Anchor" href="#1339-搜索字符串片段"></a> 13.3.9. 搜索字符串片段</h4>
+<h4 id="13310-替换字符串"><a class="markdownIt-Anchor" href="#13310-替换字符串"></a> 13.3.10. 替换字符串</h4>
+<h4 id="13311-使用反向引用"><a class="markdownIt-Anchor" href="#13311-使用反向引用"></a> 13.3.11. 使用反向引用</h4>
+<h4 id="13312-在文本行的开始插入文本"><a class="markdownIt-Anchor" href="#13312-在文本行的开始插入文本"></a> 13.3.12. 在文本行的开始插入文本</h4>
+<h4 id="13313-删除多余的空格"><a class="markdownIt-Anchor" href="#13313-删除多余的空格"></a> 13.3.13. 删除多余的空格</h4>
+<h4 id="13314-搜索和移除重复的单词"><a class="markdownIt-Anchor" href="#13314-搜索和移除重复的单词"></a> 13.3.14. 搜索和移除重复的单词</h4>
+<h4 id="13315-非捕获组"><a class="markdownIt-Anchor" href="#13315-非捕获组"></a> 13.3.15. 非捕获组</h4>
+<h3 id="134-文本处理实例"><a class="markdownIt-Anchor" href="#134-文本处理实例"></a> 13.4. 文本处理实例</h3>
+<h4 id="1341-文本处理实例一"><a class="markdownIt-Anchor" href="#1341-文本处理实例一"></a> 13.4.1. 文本处理实例（一）</h4>
+<h4 id="1342-文本处理实例二"><a class="markdownIt-Anchor" href="#1342-文本处理实例二"></a> 13.4.2. 文本处理实例（二）</h4>
+<h4 id="1343-文本处理实例三"><a class="markdownIt-Anchor" href="#1343-文本处理实例三"></a> 13.4.3. 文本处理实例（三）</h4>
+<h4 id="1344-文本处理实例四"><a class="markdownIt-Anchor" href="#1344-文本处理实例四"></a> 13.4.4. 文本处理实例（四）</h4>
+<h2 id="14-powershell处理xml"><a class="markdownIt-Anchor" href="#14-powershell处理xml"></a> 14. PowerShell处理XML</h2>
+<h3 id="141-xml-结构"><a class="markdownIt-Anchor" href="#141-xml-结构"></a> 14.1. XML 结构</h3>
+<h3 id="142-加载和处理xml文件"><a class="markdownIt-Anchor" href="#142-加载和处理xml文件"></a> 14.2. 加载和处理XML文件</h3>
+<h3 id="143-浏览扩展类型系统"><a class="markdownIt-Anchor" href="#143-浏览扩展类型系统"></a> 14.3. 浏览扩展类型系统</h3>
+<h2 id="15-powershell文件系统"><a class="markdownIt-Anchor" href="#15-powershell文件系统"></a> 15. PowerShell文件系统</h2>
+<h3 id="151-前言"><a class="markdownIt-Anchor" href="#151-前言"></a> 15.1. 前言</h3>
+<h3 id="152-访问文件和目录"><a class="markdownIt-Anchor" href="#152-访问文件和目录"></a> 15.2. 访问文件和目录</h3>
+<h3 id="153-导航文件系统"><a class="markdownIt-Anchor" href="#153-导航文件系统"></a> 15.3. 导航文件系统</h3>
+<h3 id="154-使用目录和文件工作"><a class="markdownIt-Anchor" href="#154-使用目录和文件工作"></a> 15.4. 使用目录和文件工作</h3>
+<h3 id="155-管理访问权限"><a class="markdownIt-Anchor" href="#155-管理访问权限"></a> 15.5. 管理访问权限</h3>
+<h2 id="16-powershell注册表"><a class="markdownIt-Anchor" href="#16-powershell注册表"></a> 16. PowerShell注册表</h2>
+<h3 id="161-操作注册表的几条重要命令"><a class="markdownIt-Anchor" href="#161-操作注册表的几条重要命令"></a> 16.1. 操作注册表的几条重要命令</h3>
+<h3 id="162-提供程序文件系统以外的位置"><a class="markdownIt-Anchor" href="#162-提供程序文件系统以外的位置"></a> 16.2. “提供程序”文件系统以外的位置</h3>
+<h3 id="163-搜索注册表"><a class="markdownIt-Anchor" href="#163-搜索注册表"></a> 16.3. 搜索注册表</h3>
+<h3 id="164-创建和删除键值"><a class="markdownIt-Anchor" href="#164-创建和删除键值"></a> 16.4. 创建和删除键值</h3>
+<h3 id="165-注册表权限"><a class="markdownIt-Anchor" href="#165-注册表权限"></a> 16.5. 注册表权限</h3>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="../../images/wechat_code.webp" alt="打赏二维码" width="300" height="300">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="../../images/wechat_code.webp">
+                <img class="reward-select-item-wechat" src="../../images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="../../images/alipay_code.webp">
+                <img class="reward-select-item-alipay" src="../../images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://cyriltaylor.github.io/posts/4053355734/&title=《PowerShell详解》 — 岁月静好&pic=https://cyriltaylor.github.ioimages/logo.webp" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://cyriltaylor.github.io/posts/4053355734/&title=《PowerShell详解》 — 岁月静好&source=
+
+1. 认识Powershell
+
+1.1. 介绍和安装
+1.2. 自定义控制台
+1.3. 快速编辑模式和标准模式
+1.4. 快捷键
+1.5. 管道和重..." data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://cyriltaylor.github.io/posts/4053355734/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PowerShell详解》 — 岁月静好&url=https://cyriltaylor.github.io/posts/4053355734/&via=https://cyriltaylor.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://cyriltaylor.github.io/posts/4053355734/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://cyriltaylor.github.io/posts/4053355734/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-认识powershell"><span class="post-toc-text"> 1. 认识Powershell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-介绍和安装"><span class="post-toc-text"> 1.1. 介绍和安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-自定义控制台"><span class="post-toc-text"> 1.2. 自定义控制台</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-快速编辑模式和标准模式"><span class="post-toc-text"> 1.3. 快速编辑模式和标准模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-快捷键"><span class="post-toc-text"> 1.4. 快捷键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#15-管道和重定向"><span class="post-toc-text"> 1.5. 管道和重定向</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-powershell交互式"><span class="post-toc-text"> 2. Powershell交互式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#21-数学运算"><span class="post-toc-text"> 2.1. 数学运算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#22-执行外部命令"><span class="post-toc-text"> 2.2. 执行外部命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#23-命令集"><span class="post-toc-text"> 2.3. 命令集</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#24-别名"><span class="post-toc-text"> 2.4. 别名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#25-通过函数扩展别名"><span class="post-toc-text"> 2.5. 通过函数扩展别名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#26-执行文件和脚本"><span class="post-toc-text"> 2.6. 执行文件和脚本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-powershell变量"><span class="post-toc-text"> 3. Powershell变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#31-定义变量"><span class="post-toc-text"> 3.1. 定义变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#32-自动化变量"><span class="post-toc-text"> 3.2. 自动化变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#33-环境变量"><span class="post-toc-text"> 3.3. 环境变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#34-驱动器变量"><span class="post-toc-text"> 3.4. 驱动器变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#35-变量的作用域"><span class="post-toc-text"> 3.5. 变量的作用域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#36-变量的类型和强类型"><span class="post-toc-text"> 3.6. 变量的类型和强类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#37-变量的幕后管理"><span class="post-toc-text"> 3.7. 变量的幕后管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-powershell数组和哈希表"><span class="post-toc-text"> 4. Powershell数组和哈希表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#41-命令返回数组"><span class="post-toc-text"> 4.1. 命令返回数组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#42-创建数组"><span class="post-toc-text"> 4.2. 创建数组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#43-访问数组"><span class="post-toc-text"> 4.3. 访问数组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#44-复制数组"><span class="post-toc-text"> 4.4. 复制数组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#45-强类型数组"><span class="post-toc-text"> 4.5. 强类型数组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#46-使用哈希表"><span class="post-toc-text"> 4.6. 使用哈希表</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-powershell管道"><span class="post-toc-text"> 5. Powershell管道</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#51-使用管道"><span class="post-toc-text"> 5.1. 使用管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#52-对象转换成文本"><span class="post-toc-text"> 5.2. 对象转换成文本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#53-排序和分组"><span class="post-toc-text"> 5.3. 排序和分组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#54-过滤管道结果"><span class="post-toc-text"> 5.4. 过滤管道结果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#55-分析和比较管道结果"><span class="post-toc-text"> 5.5. 分析和比较管道结果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#56-导出管道结果"><span class="post-toc-text"> 5.6. 导出管道结果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#57-扩展类型系统"><span class="post-toc-text"> 5.7. 扩展类型系统</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-powershell使用对象"><span class="post-toc-text"> 6. Powershell使用对象</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#61-对象属性方法"><span class="post-toc-text"> 6.1. 对象&#x3D;属性+方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#62-属性对象是什么"><span class="post-toc-text"> 6.2. 属性（对象是什么）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#63-方法对象能做什么"><span class="post-toc-text"> 6.3. 方法（对象能做什么）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#64-使用真实的对象工作"><span class="post-toc-text"> 6.4. 使用真实的对象工作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#65-调用静态方法"><span class="post-toc-text"> 6.5. 调用静态方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#66-创建对象"><span class="post-toc-text"> 6.6. 创建对象</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-powershell条件判断"><span class="post-toc-text"> 7. Powershell条件判断</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#71-条件表达式"><span class="post-toc-text"> 7.1. 条件表达式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#72-where-object"><span class="post-toc-text"> 7.2. Where-Object</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#73-if-elseif-else"><span class="post-toc-text"> 7.3. IF-ElseIf-Else</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#74-switch"><span class="post-toc-text"> 7.4. Switch</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-powershell循环"><span class="post-toc-text"> 8. Powershell循环</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#81-foreach-object"><span class="post-toc-text"> 8.1. ForEach-Object</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#82-foreach"><span class="post-toc-text"> 8.2. Foreach</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#83-do-while"><span class="post-toc-text"> 8.3. Do While</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#84-for"><span class="post-toc-text"> 8.4. For</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#85-switch"><span class="post-toc-text"> 8.5. Switch</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-powershell函数"><span class="post-toc-text"> 9. Powershell函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#91-定义新函数"><span class="post-toc-text"> 9.1. 定义新函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#92-处理函数的参数"><span class="post-toc-text"> 9.2. 处理函数的参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#93-指定函数的返回值"><span class="post-toc-text"> 9.3. 指定函数的返回值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#94-查看支持的函数"><span class="post-toc-text"> 9.4. 查看支持的函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#95-函数-过滤器-管道"><span class="post-toc-text"> 9.5. 函数 过滤器 管道</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-powershell脚本"><span class="post-toc-text"> 10. Powershell脚本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#101-编写和运行脚本"><span class="post-toc-text"> 10.1. 编写和运行脚本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#102-给脚本传递参数"><span class="post-toc-text"> 10.2. 给脚本传递参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#103-增强脚本的可读性"><span class="post-toc-text"> 10.3. 增强脚本的可读性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#104-创建管道脚本"><span class="post-toc-text"> 10.4. 创建管道脚本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#105-自动执行脚本之profile"><span class="post-toc-text"> 10.5. 自动执行脚本之profile</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#106-脚本的数字签名"><span class="post-toc-text"> 10.6. 脚本的数字签名</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-powershell错误处理"><span class="post-toc-text"> 11. Powershell错误处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#111-what-if"><span class="post-toc-text"> 11.1. what-if</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#112-定义容错度"><span class="post-toc-text"> 11.2. 定义容错度</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#113-识别和处理异常"><span class="post-toc-text"> 11.3. 识别和处理异常</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#114-错误记录详细错误"><span class="post-toc-text"> 11.4. 错误记录:详细错误</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#115-理解异常"><span class="post-toc-text"> 11.5. 理解异常</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#116-在函数和脚本中捕获异常"><span class="post-toc-text"> 11.6. 在函数和脚本中捕获异常</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#117-断点执行"><span class="post-toc-text"> 11.7. 断点执行</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-powershell命令发现和脚本块"><span class="post-toc-text"> 12. Powershell命令发现和脚本块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#121-发现命令"><span class="post-toc-text"> 12.1. 发现命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#122-调用操作符"><span class="post-toc-text"> 12.2. 调用操作符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#123-使用语句块"><span class="post-toc-text"> 12.3. 使用语句块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#124-执行上下文"><span class="post-toc-text"> 12.4. 执行上下文</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-powershell文本和正则表达式"><span class="post-toc-text"> 13. Powershell文本和正则表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#131-定义文本"><span class="post-toc-text"> 13.1. 定义文本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#132-使用特殊文本命令"><span class="post-toc-text"> 13.2. 使用特殊文本命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1321-字符串操作符"><span class="post-toc-text"> 13.2.1. 字符串操作符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#13211-格式化字符串"><span class="post-toc-text"> 13.2.1.1. 格式化字符串</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#13212-设置数字格式"><span class="post-toc-text"> 13.2.1.2. 设置数字格式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#13213-固定宽度的制表输出"><span class="post-toc-text"> 13.2.1.3. 固定宽度的制表输出</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1322-string-对象方法"><span class="post-toc-text"> 13.2.2. String 对象方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1323-string-类方方法"><span class="post-toc-text"> 13.2.3. String 类方方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1324-简单模式匹配"><span class="post-toc-text"> 13.2.4. 简单模式匹配</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#133-正则表达式"><span class="post-toc-text"> 13.3. 正则表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1331-定义模式"><span class="post-toc-text"> 13.3.1. 定义模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1332-同时搜索不同的词语"><span class="post-toc-text"> 13.3.2. 同时搜索不同的词语</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1333-大小写敏感"><span class="post-toc-text"> 13.3.3. 大小写敏感</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1334-在文本中搜索信息"><span class="post-toc-text"> 13.3.4. 在文本中搜索信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1335-搜索不同的关键字"><span class="post-toc-text"> 13.3.5. 搜索不同的关键字</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1336-组"><span class="post-toc-text"> 13.3.6. 组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1337-深入使用子表达式"><span class="post-toc-text"> 13.3.7. 深入使用子表达式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1338-贪婪与非贪婪匹配"><span class="post-toc-text"> 13.3.8. 贪婪与非贪婪匹配</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1339-搜索字符串片段"><span class="post-toc-text"> 13.3.9. 搜索字符串片段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13310-替换字符串"><span class="post-toc-text"> 13.3.10. 替换字符串</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13311-使用反向引用"><span class="post-toc-text"> 13.3.11. 使用反向引用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13312-在文本行的开始插入文本"><span class="post-toc-text"> 13.3.12. 在文本行的开始插入文本</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13313-删除多余的空格"><span class="post-toc-text"> 13.3.13. 删除多余的空格</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13314-搜索和移除重复的单词"><span class="post-toc-text"> 13.3.14. 搜索和移除重复的单词</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13315-非捕获组"><span class="post-toc-text"> 13.3.15. 非捕获组</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#134-文本处理实例"><span class="post-toc-text"> 13.4. 文本处理实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1341-文本处理实例一"><span class="post-toc-text"> 13.4.1. 文本处理实例（一）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1342-文本处理实例二"><span class="post-toc-text"> 13.4.2. 文本处理实例（二）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1343-文本处理实例三"><span class="post-toc-text"> 13.4.3. 文本处理实例（三）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1344-文本处理实例四"><span class="post-toc-text"> 13.4.4. 文本处理实例（四）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-powershell处理xml"><span class="post-toc-text"> 14. PowerShell处理XML</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#141-xml-结构"><span class="post-toc-text"> 14.1. XML 结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#142-加载和处理xml文件"><span class="post-toc-text"> 14.2. 加载和处理XML文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#143-浏览扩展类型系统"><span class="post-toc-text"> 14.3. 浏览扩展类型系统</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#15-powershell文件系统"><span class="post-toc-text"> 15. PowerShell文件系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#151-前言"><span class="post-toc-text"> 15.1. 前言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#152-访问文件和目录"><span class="post-toc-text"> 15.2. 访问文件和目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#153-导航文件系统"><span class="post-toc-text"> 15.3. 导航文件系统</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#154-使用目录和文件工作"><span class="post-toc-text"> 15.4. 使用目录和文件工作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#155-管理访问权限"><span class="post-toc-text"> 15.5. 管理访问权限</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#16-powershell注册表"><span class="post-toc-text"> 16. PowerShell注册表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#161-操作注册表的几条重要命令"><span class="post-toc-text"> 16.1. 操作注册表的几条重要命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#162-提供程序文件系统以外的位置"><span class="post-toc-text"> 16.2. “提供程序”文件系统以外的位置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#163-搜索注册表"><span class="post-toc-text"> 16.3. 搜索注册表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#164-创建和删除键值"><span class="post-toc-text"> 16.4. 创建和删除键值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#165-注册表权限"><span class="post-toc-text"> 16.5. 注册表权限</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="../3374613233/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          软件推荐
+        
+      </span>
+    </a>
+  
+  
+    <a href="../640264113/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Android信号强度转换</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2020 Cyril Taylor<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://cyriltaylor.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="../../categories/C-C/">C/C++</a><a class="category-link" href="../../categories/Java/">Java</a><a class="category-link" href="../../categories/Kotlin/">Kotlin</a><a class="category-link" href="../../categories/Linux/">Linux</a><a class="category-link" href="../../categories/shell/">shell</a><a class="category-link" href="../../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="category-link" href="../../categories/%E7%AE%97%E6%B3%95/">算法</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="../../tags/C-C/" style="font-size: 16.67px;">C/C++</a> <a href="../../tags/GPIO/" style="font-size: 10px;">GPIO</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Kernel/" style="font-size: 10px;">Kernel</a> <a href="../../tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="../../tags/Linux/" style="font-size: 20px;">Linux</a> <a href="../../tags/Linux%E9%A9%B1%E5%8A%A8/" style="font-size: 10px;">Linux驱动</a> <a href="../../tags/Pinctrl/" style="font-size: 10px;">Pinctrl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/kernel-API/" style="font-size: 10px;">kernel API</a> <a href="../../tags/shell/" style="font-size: 13.33px;">shell</a> <a href="../../tags/zsh/" style="font-size: 10px;">zsh</a> <a href="../../tags/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" style="font-size: 10px;">华为机试</a> <a href="../../tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="../../tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="../../tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="../../tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="../../tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">编程技巧</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="../../tags/%E8%AE%BE%E5%A4%87%E6%A0%91/" style="font-size: 10px;">设备树</a> <a href="../../tags/%E9%A2%98%E5%BA%93/" style="font-size: 10px;">题库</a> <a href="../../tags/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" style="font-size: 13.33px;">高级特性</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="../../index.html">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="../../archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="../../about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="../../tags/C-C/" style="font-size: 16.67px;">C/C++</a> <a href="../../tags/GPIO/" style="font-size: 10px;">GPIO</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Kernel/" style="font-size: 10px;">Kernel</a> <a href="../../tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="../../tags/Linux/" style="font-size: 20px;">Linux</a> <a href="../../tags/Linux%E9%A9%B1%E5%8A%A8/" style="font-size: 10px;">Linux驱动</a> <a href="../../tags/Pinctrl/" style="font-size: 10px;">Pinctrl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/kernel-API/" style="font-size: 10px;">kernel API</a> <a href="../../tags/shell/" style="font-size: 13.33px;">shell</a> <a href="../../tags/zsh/" style="font-size: 10px;">zsh</a> <a href="../../tags/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" style="font-size: 10px;">华为机试</a> <a href="../../tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="../../tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="../../tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="../../tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="../../tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">编程技巧</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="../../tags/%E8%AE%BE%E5%A4%87%E6%A0%91/" style="font-size: 10px;">设备树</a> <a href="../../tags/%E9%A2%98%E5%BA%93/" style="font-size: 10px;">题库</a> <a href="../../tags/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" style="font-size: 13.33px;">高级特性</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+
+<script src="../../js/search.js"></script>
+
+
+<script src="../../js/main.js"></script>
+
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="../../js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="../../cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="../../js/animate.js"></script>
+
+
+
+  
+<script src="../../js/pop-img.js"></script>
+
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>

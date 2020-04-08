@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Flutter基础教程 | 岁月静好</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Cyril Taylor,cyriltaylor,hexo,blog" />
+  
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Flutter基础教程">
+<meta property="og:url" content="https://cyriltaylor.github.io/posts/777259726/index.html">
+<meta property="og:site_name" content="岁月静好">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-05T17:07:25.000Z">
+<meta property="article:modified_time" content="2020-04-08T09:36:58.000Z">
+<meta property="article:author" content="Cyril Taylor">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css">
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+  
+<script src="../../js/pace.min.js"></script>
+
+  
+
+  
+  
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="../../index.html" class="left">
+                    <span class="site-title">积慧</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="../../index.html">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="../../archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="../../about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="../../index.html">
+                    <img src="../../images/logo.webp" alt="logo" width="130px" height="130px">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        积慧
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        卸下浮躁，保持宁静。
+心无旁骛，用心专注。
+脚踏实地，稳健向前。
+追求极致，享受其中。
+相扶相爱，群人共远。
+更高境地，漫步人生。
+
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Github" target="_blank" href="../../github.com/CyrilTaylor">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="微博" target="_blank" href="../../www.weibo.com/CyrilTaylor">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="邮箱"  href="../../mailto:CyrilTaylor@foxmail.com">
+                            <i class="fa fa-envelope fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Flutter/Flutter基础教程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      <span class="article-type type-original">原</span>Flutter基础教程
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-10-06
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+    <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2020年04月08日 09:36</p>
+
+            <p>版权声明：本文为<a href="https://cyriltaylor.github.io">Cyril Taylor</a>原创文章，遵循<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0 BY-SA </a>版权协议，转载请附上原文出处链接和本声明。</p>
+
+        <p>本文链接： <a class="post-url" href="" title="Flutter基础教程">https://cyriltaylor.github.io/posts/777259726/</a></p>
+        <footer>
+
+            <a href="https://cyriltaylor.github.io">
+                <img src="../../images/logo.webp" alt="Cyril Taylor">
+                Cyril Taylor
+            </a>
+        </footer>
+    </div>
+</div>
+
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="../../images/wechat_code.webp" alt="打赏二维码" width="300" height="300">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="../../images/wechat_code.webp">
+                <img class="reward-select-item-wechat" src="../../images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="../../images/alipay_code.webp">
+                <img class="reward-select-item-alipay" src="../../images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://cyriltaylor.github.io/posts/777259726/&title=《Flutter基础教程》 — 岁月静好&pic=flutter.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://cyriltaylor.github.io/posts/777259726/&title=《Flutter基础教程》 — 岁月静好&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://cyriltaylor.github.io/posts/777259726/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter基础教程》 — 岁月静好&url=https://cyriltaylor.github.io/posts/777259726/&via=https://cyriltaylor.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://cyriltaylor.github.io/posts/777259726/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://cyriltaylor.github.io/posts/777259726/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="article-nav">
+  
+    <a href="../441574646/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          斯坦福大学2014(吴恩达)机器学习教程中文笔记
+        
+      </span>
+    </a>
+  
+  
+    <a href="../1940182388/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Visual Studio Code配置</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2020 Cyril Taylor<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://cyriltaylor.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="../../categories/C-C/">C/C++</a><a class="category-link" href="../../categories/Java/">Java</a><a class="category-link" href="../../categories/Kotlin/">Kotlin</a><a class="category-link" href="../../categories/Linux/">Linux</a><a class="category-link" href="../../categories/shell/">shell</a><a class="category-link" href="../../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="category-link" href="../../categories/%E7%AE%97%E6%B3%95/">算法</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="../../tags/C-C/" style="font-size: 16.67px;">C/C++</a> <a href="../../tags/GPIO/" style="font-size: 10px;">GPIO</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Kernel/" style="font-size: 10px;">Kernel</a> <a href="../../tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="../../tags/Linux/" style="font-size: 20px;">Linux</a> <a href="../../tags/Linux%E9%A9%B1%E5%8A%A8/" style="font-size: 10px;">Linux驱动</a> <a href="../../tags/Pinctrl/" style="font-size: 10px;">Pinctrl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/kernel-API/" style="font-size: 10px;">kernel API</a> <a href="../../tags/shell/" style="font-size: 13.33px;">shell</a> <a href="../../tags/zsh/" style="font-size: 10px;">zsh</a> <a href="../../tags/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" style="font-size: 10px;">华为机试</a> <a href="../../tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="../../tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="../../tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="../../tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="../../tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">编程技巧</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="../../tags/%E8%AE%BE%E5%A4%87%E6%A0%91/" style="font-size: 10px;">设备树</a> <a href="../../tags/%E9%A2%98%E5%BA%93/" style="font-size: 10px;">题库</a> <a href="../../tags/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" style="font-size: 13.33px;">高级特性</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="../../index.html">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="../../archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="../../about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="../../tags/C-C/" style="font-size: 16.67px;">C/C++</a> <a href="../../tags/GPIO/" style="font-size: 10px;">GPIO</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Kernel/" style="font-size: 10px;">Kernel</a> <a href="../../tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="../../tags/Linux/" style="font-size: 20px;">Linux</a> <a href="../../tags/Linux%E9%A9%B1%E5%8A%A8/" style="font-size: 10px;">Linux驱动</a> <a href="../../tags/Pinctrl/" style="font-size: 10px;">Pinctrl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/kernel-API/" style="font-size: 10px;">kernel API</a> <a href="../../tags/shell/" style="font-size: 13.33px;">shell</a> <a href="../../tags/zsh/" style="font-size: 10px;">zsh</a> <a href="../../tags/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" style="font-size: 10px;">华为机试</a> <a href="../../tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="../../tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="../../tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="../../tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="../../tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">编程技巧</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="../../tags/%E8%AE%BE%E5%A4%87%E6%A0%91/" style="font-size: 10px;">设备树</a> <a href="../../tags/%E9%A2%98%E5%BA%93/" style="font-size: 10px;">题库</a> <a href="../../tags/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" style="font-size: 13.33px;">高级特性</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+
+<script src="../../js/search.js"></script>
+
+
+<script src="../../js/main.js"></script>
+
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="../../js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="../../cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="../../js/animate.js"></script>
+
+
+
+  
+<script src="../../js/pop-img.js"></script>
+
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>
