@@ -123,7 +123,7 @@ body,
   height: 100%;
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, FangSong, STFangsong, Arial, sans-serif;
   background: #eee;
   font-size: 14px;
   -webkit-text-size-adjust: 100%;
@@ -2440,6 +2440,10 @@ pre .javascript .function {
   background: rgba(240,240,240,0.6);
   -webkit-transition: background 0.3s;
   transition: background 0.3s;
+  outline: none;
+}
+.search-wrap .search-field:hover {
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2), 0 -5px 10px rgba(0,0,0,0.2);
 }
 .search-wrap .search-field:focus {
   background: rgba(230,230,230,0.6);
