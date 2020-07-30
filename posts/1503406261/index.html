@@ -16,7 +16,7 @@
 <meta property="og:description" content="1. 抽象类与接口 2. 集合框架  2.1. List 2.2. Map 2.3. Set 2.4. Queue   3. 异常和Error 4. 类加载过程 5. 泛型 6. 反射 7. 注解 8. 互斥锁  8.1. 乐观锁与悲观锁 8.2. 自旋锁">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-10-10T15:33:52.000Z">
-<meta property="article:modified_time" content="2020-07-16T03:55:55.000Z">
+<meta property="article:modified_time" content="2020-07-30T03:09:25.000Z">
 <meta property="article:author" content="Cyril Taylor">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="高级特性">
@@ -38,7 +38,7 @@
   
   
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
+<meta name="generator" content="Hexo 5.0.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -150,7 +150,7 @@
     </div>
     <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2020年07月16日 03:55</p>
+        <p>最后更新： 2020年07月30日 03:09</p>
 
             <p>版权声明：本文为<a href="https://cyriltaylor.github.io">Cyril Taylor</a>原创文章，遵循<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0 BY-SA </a>版权协议，转载请附上原文出处链接和本声明。</p>
 
@@ -367,7 +367,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-抽象类与接口"><span class="post-toc-text"> 1. 抽象类与接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-集合框架"><span class="post-toc-text"> 2. 集合框架</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#21-list"><span class="post-toc-text"> 2.1. List</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#22-map"><span class="post-toc-text"> 2.2. Map</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#23-set"><span class="post-toc-text"> 2.3. Set</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#24-queue"><span class="post-toc-text"> 2.4. Queue</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-异常和error"><span class="post-toc-text"> 3. 异常和Error</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-类加载过程"><span class="post-toc-text"> 4. 类加载过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-泛型"><span class="post-toc-text"> 5. 泛型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-反射"><span class="post-toc-text"> 6. 反射</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-注解"><span class="post-toc-text"> 7. 注解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-互斥锁"><span class="post-toc-text"> 8. 互斥锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#81-乐观锁与悲观锁"><span class="post-toc-text"> 8.1. 乐观锁与悲观锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#82-自旋锁"><span class="post-toc-text"> 8.2. 自旋锁</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3"><span class="post-toc-text"> 1. 抽象类与接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6"><span class="post-toc-text"> 2. 集合框架</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#21-list"><span class="post-toc-text"> 2.1. List</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#22-map"><span class="post-toc-text"> 2.2. Map</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#23-set"><span class="post-toc-text"> 2.3. Set</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#24-queue"><span class="post-toc-text"> 2.4. Queue</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-%E5%BC%82%E5%B8%B8%E5%92%8Cerror"><span class="post-toc-text"> 3. 异常和Error</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="post-toc-text"> 4. 类加载过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-%E6%B3%9B%E5%9E%8B"><span class="post-toc-text"> 5. 泛型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-%E5%8F%8D%E5%B0%84"><span class="post-toc-text"> 6. 反射</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-%E6%B3%A8%E8%A7%A3"><span class="post-toc-text"> 7. 注解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-%E4%BA%92%E6%96%A5%E9%94%81"><span class="post-toc-text"> 8. 互斥锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#81-%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81"><span class="post-toc-text"> 8.1. 乐观锁与悲观锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#82-%E8%87%AA%E6%97%8B%E9%94%81"><span class="post-toc-text"> 8.2. 自旋锁</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
