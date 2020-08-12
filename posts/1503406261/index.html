@@ -8,15 +8,15 @@
   
     <meta name="keywords" content="Cyril Taylor,cyriltaylor,hexo,blog" />
   
-  <meta name="description" content="1. 抽象类与接口 2. 集合框架  2.1. List 2.2. Map 2.3. Set 2.4. Queue   3. 异常和Error 4. 类加载过程 5. 泛型 6. 反射 7. 注解 8. 互斥锁  8.1. 乐观锁与悲观锁 8.2. 自旋锁">
+  <meta name="description" content="1. 抽象类与接口 try…catch…finally执行顺序及返回值 2. 集合框架  2.1. List 2.2. Map 2.3. Set 2.4. Queue   3. 异常和Error 4. 类加载过程 5. 泛型 6. 反射 7. 注解 8. 互斥锁  8.1. 乐观锁与悲观锁 8.2. 自旋锁">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java进阶">
 <meta property="og:url" content="https://cyriltaylor.github.io/posts/1503406261/index.html">
 <meta property="og:site_name" content="敛聪存慧">
-<meta property="og:description" content="1. 抽象类与接口 2. 集合框架  2.1. List 2.2. Map 2.3. Set 2.4. Queue   3. 异常和Error 4. 类加载过程 5. 泛型 6. 反射 7. 注解 8. 互斥锁  8.1. 乐观锁与悲观锁 8.2. 自旋锁">
+<meta property="og:description" content="1. 抽象类与接口 try…catch…finally执行顺序及返回值 2. 集合框架  2.1. List 2.2. Map 2.3. Set 2.4. Queue   3. 异常和Error 4. 类加载过程 5. 泛型 6. 反射 7. 注解 8. 互斥锁  8.1. 乐观锁与悲观锁 8.2. 自旋锁">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-10-10T15:33:52.000Z">
-<meta property="article:modified_time" content="2020-08-11T03:26:27.000Z">
+<meta property="article:modified_time" content="2020-08-12T23:01:50.000Z">
 <meta property="article:author" content="Cyril Taylor">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="高级特性">
@@ -150,7 +150,7 @@
     </div>
     <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2020年08月11日 03:26</p>
+        <p>最后更新： 2020年08月12日 23:01</p>
 
             <p>版权声明：本文为<a href="https://cyriltaylor.github.io">Cyril Taylor</a>原创文章，遵循<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0 BY-SA </a>版权协议，转载请附上原文出处链接和本声明。</p>
 
@@ -180,6 +180,7 @@
             <!-- TOC -->
 <ul>
 <li><a href="#1-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3">1. 抽象类与接口</a></li>
+<li><a href="#trycatchfinally%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E5%8F%8A%E8%BF%94%E5%9B%9E%E5%80%BC">try…catch…finally执行顺序及返回值</a></li>
 <li><a href="#2-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6">2. 集合框架</a>
 <ul>
 <li><a href="#21-list">2.1. List</a></li>
@@ -231,6 +232,8 @@
 </ol>
 </li>
 </ul>
+<h2 id="trycatchfinally执行顺序及返回值"><a class="markdownIt-Anchor" href="#trycatchfinally执行顺序及返回值"></a> try…catch…finally执行顺序及返回值</h2>
+<p><a href="https://blog.csdn.net/stypace/article/details/42102181">https://blog.csdn.net/stypace/article/details/42102181</a></p>
 <h2 id="2-集合框架"><a class="markdownIt-Anchor" href="#2-集合框架"></a> 2. 集合框架</h2>
 <p>Java集合框架</p>
 <h3 id="21-list"><a class="markdownIt-Anchor" href="#21-list"></a> 2.1. List</h3>
@@ -306,16 +309,13 @@
             <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://cyriltaylor.github.io/posts/1503406261/&title=《Java进阶》 — 敛聪存慧&source=
 
 1. 抽象类与接口
+try…catch…finally执行顺序及返回值
 2. 集合框架
 
 2.1. List
 2.2. Map
 2.3. Set
-2.4. Queue
-
-
-3. 异常和Error
-4. ..." data-title="QQ">
+2...." data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
@@ -367,7 +367,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3"><span class="post-toc-text"> 1. 抽象类与接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6"><span class="post-toc-text"> 2. 集合框架</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#21-list"><span class="post-toc-text"> 2.1. List</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#22-map"><span class="post-toc-text"> 2.2. Map</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#23-set"><span class="post-toc-text"> 2.3. Set</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#24-queue"><span class="post-toc-text"> 2.4. Queue</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-%E5%BC%82%E5%B8%B8%E5%92%8Cerror"><span class="post-toc-text"> 3. 异常和Error</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="post-toc-text"> 4. 类加载过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-%E6%B3%9B%E5%9E%8B"><span class="post-toc-text"> 5. 泛型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-%E5%8F%8D%E5%B0%84"><span class="post-toc-text"> 6. 反射</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-%E6%B3%A8%E8%A7%A3"><span class="post-toc-text"> 7. 注解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-%E4%BA%92%E6%96%A5%E9%94%81"><span class="post-toc-text"> 8. 互斥锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#81-%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81"><span class="post-toc-text"> 8.1. 乐观锁与悲观锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#82-%E8%87%AA%E6%97%8B%E9%94%81"><span class="post-toc-text"> 8.2. 自旋锁</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3"><span class="post-toc-text"> 1. 抽象类与接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#trycatchfinally%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E5%8F%8A%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="post-toc-text"> try…catch…finally执行顺序及返回值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6"><span class="post-toc-text"> 2. 集合框架</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#21-list"><span class="post-toc-text"> 2.1. List</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#22-map"><span class="post-toc-text"> 2.2. Map</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#23-set"><span class="post-toc-text"> 2.3. Set</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#24-queue"><span class="post-toc-text"> 2.4. Queue</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-%E5%BC%82%E5%B8%B8%E5%92%8Cerror"><span class="post-toc-text"> 3. 异常和Error</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="post-toc-text"> 4. 类加载过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-%E6%B3%9B%E5%9E%8B"><span class="post-toc-text"> 5. 泛型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-%E5%8F%8D%E5%B0%84"><span class="post-toc-text"> 6. 反射</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-%E6%B3%A8%E8%A7%A3"><span class="post-toc-text"> 7. 注解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-%E4%BA%92%E6%96%A5%E9%94%81"><span class="post-toc-text"> 8. 互斥锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#81-%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81"><span class="post-toc-text"> 8.1. 乐观锁与悲观锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#82-%E8%87%AA%E6%97%8B%E9%94%81"><span class="post-toc-text"> 8.2. 自旋锁</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -494,9 +494,9 @@
             <i class="icon icon-lg icon-chevron-left"></i>
         </a>
         <input class="search-field" placeholder="Search..." id="keywords">
-        <a id="search-submit" href="javascript:;">
+        <!-- <a id="search-submit" href="javascript:;">
             <i class="fa fa-search"></i>
-        </a>
+        </a> -->
     <div class="search-container" id="search-container">
         <ul class="search-result" id="search-result">
         </ul>

@@ -111,11 +111,8 @@ button::-moz-focus-inner {
   padding: 0;
 }
 @font-face {
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  src: url("fonts/fontawesome-webfont.eot?v=#4.0.3");
-  src: url("fonts/fontawesome-webfont.eot?#iefix&v=#4.0.3") format("embedded-opentype"), url("fonts/fontawesome-webfont.woff?v=#4.0.3") format("woff"), url("fonts/fontawesome-webfont.ttf?v=#4.0.3") format("truetype"), url("fonts/fontawesome-webfont.svg#fontawesomeregular?v=#4.0.3") format("svg");
+  font-family: "FiraCodeNerdFont";
+  src: url("fontsFiraCode/FiraCodeRegularNerdFontComplete.woff2");
 }
 html,
 body,
@@ -123,7 +120,7 @@ body,
   height: 100%;
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, FangSong, STFangsong, Arial, sans-serif;
+  font-family: FiraCodeNerdFont, "Helvetica Neue", Helvetica, FangSong, STFangsong, Arial, sans-serif;
   background: #eee;
   font-size: 14px;
   -webkit-text-size-adjust: 100%;
@@ -642,7 +639,7 @@ body {
   opacity: 1;
 }
 .nav-icon {
-  font-family: FontAwesome;
+  font-family: FiraCodeNerdFont;
   text-align: center;
   font-size: 14px;
   width: 14px;
@@ -716,7 +713,7 @@ body {
   background: none;
   color: #444;
   width: 100%;
-  font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 13px FiraCodeNerdFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   outline: none;
 }
 .search-form-input::-webkit-search-results-decoration,
@@ -728,7 +725,7 @@ body {
   top: 50%;
   right: 10px;
   margin-top: -7px;
-  font: 13px FontAwesome;
+  font: 13px FiraCodeNerdFont;
   border: none;
   background: none;
   color: #bbb;
@@ -1071,7 +1068,7 @@ span.article-type.type-revise {
 .article-entry blockquote footer {
   font-size: 14px;
   margin: 1.6em 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: FiraCodeNerdFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {
   content: "—";
@@ -1172,9 +1169,9 @@ span.article-type.type-revise {
 }
 .article-more-link {
   float: right;
-  padding: 8px 20px;
+  padding: 0.5em 1.5em;
   border: 0;
-  border-radius: 0.5em;
+  border-radius: 1em;
   background: #0cc;
   box-shadow: 0 3px 10px rgba(0,0,0,0.06), 0 3px 10px rgba(0,0,0,0.13);
   -webkit-transition: all 0.1s;
@@ -1275,7 +1272,7 @@ span.article-type.type-revise {
 }
 .article-comment-link:before {
   content: "\f075";
-  font-family: FontAwesome;
+  font-family: FiraCodeNerdFont;
   padding-right: 8px;
 }
 .article-share-link {
@@ -1285,7 +1282,7 @@ span.article-type.type-revise {
 }
 .article-share-link:before {
   content: "\f064";
-  font-family: FontAwesome;
+  font-family: FiraCodeNerdFont;
   padding-right: 6px;
 }
 #article-nav {
@@ -1372,7 +1369,7 @@ span.article-type.type-revise {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px FiraCodeNerdFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0 15px;
   color: #444;
   outline: none;
@@ -1409,7 +1406,7 @@ span.article-type.type-revise {
 .article-share-pinterest:before,
 .article-share-google:before {
   font-size: 20px;
-  font-family: FontAwesome;
+  font-family: FiraCodeNerdFont;
   width: 20px;
   height: 20px;
   position: absolute;
@@ -1783,6 +1780,8 @@ video::cue {
   border-color: #ddd;
   border-width: 1px 0;
   overflow: auto;
+  font-family: FiraCodeNerdFont;
+  font-variant-ligatures: normal;
   color: #24292e;
   line-height: 22.400000000000002px;
 }
@@ -1793,7 +1792,7 @@ video::cue {
 }
 .article-entry pre,
 .article-entry code {
-  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+  font-family: FiraCodeNerdFont, Consolas, Monaco, Menlo, Consolas, monospace;
   font-size: 1em;
 }
 .article-entry code {
@@ -1808,7 +1807,7 @@ video::cue {
   background-color: rgba(185,178,180,0.5);
 }
 .article-entry .code {
-  font: 14px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font: 14px FiraCodeNerdFont, Consolas, FangSong, STFangsong, "Liberation Mono", Menlo, Courier, monospace;
 }
 .article-entry pre {
   background: rgba(182,184,186,0);
@@ -1890,7 +1889,7 @@ video::cue {
 }
 .article-entry .gist .gist-file {
   border: none;
-  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+  font-family: FiraCodeNerdFont, Consolas, Monaco, Menlo, Consolas, monospace;
   margin: 0;
 }
 .article-entry .gist .gist-file .gist-data {
@@ -1913,7 +1912,7 @@ video::cue {
 .article-entry .gist .gist-file .gist-meta {
   background: #b6b8ba;
   color: #675f5f;
-  font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 0.85em FiraCodeNerdFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
@@ -2404,9 +2403,9 @@ pre .javascript .function {
   height: 21px;
   line-height: 21px;
   float: left;
-  padding: 0 5px 0 10px;
+  padding: 0 0.5em;
   position: relative;
-  border-radius: 5px;
+  border-radius: 1em;
   margin: 5px 15px 5px 8px;
 }
 #sidebar-menu-box-categories a:hover {
@@ -2422,7 +2421,7 @@ pre .javascript .function {
   margin-left: -240px;
   z-index: 998;
   width: 400px;
-  padding: 30px;
+  padding: 1em;
   background: rgba(255,255,255,0.5);
   opacity: 0;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
@@ -2431,12 +2430,13 @@ pre .javascript .function {
   border-radius: 1em;
 }
 .search-wrap .search-field {
-  padding: 10px;
-  width: 360px;
+  padding: 0.5em;
+  width: -webkit-fill-available;
   border: 0;
   border-radius: 1em;
   color: #666;
   font-weight: normal;
+  font-size: 1.5em;
   background: rgba(240,240,240,0.6);
   -webkit-transition: background 0.3s;
   transition: background 0.3s;
@@ -2448,6 +2448,7 @@ pre .javascript .function {
 .search-wrap .search-field:focus {
   background: rgba(230,230,230,0.6);
   border-radius: 1em;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2), 0 -5px 10px rgba(0,0,0,0.2);
 }
 .search-wrap #search-submit {
   color: #0cc;
@@ -2486,15 +2487,13 @@ pre .javascript .function {
 }
 .search-container {
   position: absolute;
-  left: 6.6%;
-  top: 71%;
+  top: 90%;
   z-index: 999;
-  width: 380px;
+  width: inherit;
   max-height: 215px;
   overflow-y: auto;
   background: rgba(255,255,255,0.733);
   border-radius: 2px;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
   opacity: 0;
   visibility: hidden;
   -webkit-transform: translateY(-50%) scale(0.5);
@@ -2505,6 +2504,8 @@ pre .javascript .function {
   -webkit-transition: 0.3s ease-in;
   -webkit-transition: 0.3s ease-in;
   transition: 0.3s ease-in;
+  border-radius: 1.5em;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2), 0 -5px 10px rgba(0,0,0,0.2);
 }
 .search-container-show {
   opacity: 1;
@@ -2521,13 +2522,19 @@ pre .javascript .function {
 }
 .search-result .search-result-item {
   line-height: 1.6em;
-  padding: 10px;
   border-bottom: 1px solid #dadada;
+}
+.search-result .search-result-item:hover {
+  background: rgba(230,230,230,0.6);
 }
 .search-result .search-result-item .search-item-li {
   color: #0cc;
   text-decoration: none;
   font-size: 16px;
+  padding: 0.5em;
+  width: 100%;
+  height: 100%;
+  display: inline-table;
 }
 .search-result .search-result-item-tips {
   padding: 10px;

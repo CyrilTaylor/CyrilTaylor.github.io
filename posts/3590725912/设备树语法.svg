@@ -13,7 +13,7 @@
 	<style type="text/css">
 	<![CDATA[
 		.st1 {fill:#ffffff;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
-		.st2 {fill:#000000;font-family:SauceCodePro NF;font-size:0.874992em}
+		.st2 {fill:#000000;font-family: FiraCodeNerdFont;font-size:0.874992em}
 		.st3 {fill:#0000ff;font-size:1em}
 		.st4 {fill:#a31515;font-size:1em}
 		.st5 {font-size:1em}
@@ -22,10 +22,10 @@
 		.st8 {marker-start:url(#mrkr5-116);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
 		.st9 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.22935779816514}
 		.st10 {fill:#ffffff;stroke:none;stroke-linecap:butt;stroke-width:7.2}
-		.st11 {fill:#000000;font-family:Calibri;font-size:0.666664em}
-		.st12 {font-family:MS Gothic;font-size:1em}
-		.st13 {fill:#000000;font-family:MS Gothic;font-size:0.666664em}
-		.st14 {font-family:Calibri;font-size:1em}
+		.st11 {fill:#000000;font-family:FiraCodeNerdFont;font-size:0.666664em}
+		.st12 {font-family:FiraCodeNerdFont;font-size:1em}
+		.st13 {fill:#000000;font-family:FiraCodeNerdFont;font-size:0.666664em}
+		.st14 {font-family:FiraCodeNerdFont;font-size:1em}
 		.st15 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
 	]]>
 	</style>

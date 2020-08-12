@@ -8,16 +8,16 @@
   
     <meta name="keywords" content="Cyril Taylor,cyriltaylor,hexo,blog" />
   
-  <meta name="description" content="1. 程序虚拟存储器  1.1. 只读存储区 1.2. 堆&#x2F;栈对比 1.3. 自由存储区   2. new和malloc的区别 3. 关键字static、const、volatile  3.1. static  3.1.1. 面向过程设计中的static   3.2. 面向对象设计中的static 3.3. const  3.3.1. const修饰成员变量 3.3.2. const修饰函数参">
+  <meta name="description" content="1. ASCII码表  1.1. ASCII控制字符 1.2. ASCII可显示字符   2. 运算符优先级表 3. 程序虚拟存储器  3.1. 只读存储区 3.2. 堆&#x2F;栈对比 3.3. 自由存储区   4. new和malloc的区别 5. 关键字static、const、volatile  5.1. static  5.1.1. 面向过程设计中的static   5.2. 面向对象设计中">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++进阶">
 <meta property="og:url" content="https://cyriltaylor.github.io/posts/1473815809/index.html">
 <meta property="og:site_name" content="敛聪存慧">
-<meta property="og:description" content="1. 程序虚拟存储器  1.1. 只读存储区 1.2. 堆&#x2F;栈对比 1.3. 自由存储区   2. new和malloc的区别 3. 关键字static、const、volatile  3.1. static  3.1.1. 面向过程设计中的static   3.2. 面向对象设计中的static 3.3. const  3.3.1. const修饰成员变量 3.3.2. const修饰函数参">
+<meta property="og:description" content="1. ASCII码表  1.1. ASCII控制字符 1.2. ASCII可显示字符   2. 运算符优先级表 3. 程序虚拟存储器  3.1. 只读存储区 3.2. 堆&#x2F;栈对比 3.3. 自由存储区   4. new和malloc的区别 5. 关键字static、const、volatile  5.1. static  5.1.1. 面向过程设计中的static   5.2. 面向对象设计中">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cyriltaylor.github.io/posts/1473815809/%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8.png">
 <meta property="article:published_time" content="2019-10-10T13:37:02.000Z">
-<meta property="article:modified_time" content="2020-08-11T03:26:27.000Z">
+<meta property="article:modified_time" content="2020-08-12T23:01:50.000Z">
 <meta property="article:author" content="Cyril Taylor">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="高级特性">
@@ -152,7 +152,7 @@
     </div>
     <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2020年08月11日 03:26</p>
+        <p>最后更新： 2020年08月12日 23:01</p>
 
             <p>版权声明：本文为<a href="https://cyriltaylor.github.io">Cyril Taylor</a>原创文章，遵循<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0 BY-SA </a>版权协议，转载请附上原文出处链接和本声明。</p>
 
@@ -181,52 +181,1289 @@
             
             <!-- TOC -->
 <ul>
-<li><a href="#1-%E7%A8%8B%E5%BA%8F%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8">1. 程序虚拟存储器</a>
+<li><a href="#1-ascii%E7%A0%81%E8%A1%A8">1. ASCII码表</a>
 <ul>
-<li><a href="#11-%E5%8F%AA%E8%AF%BB%E5%AD%98%E5%82%A8%E5%8C%BA">1.1. 只读存储区</a></li>
-<li><a href="#12-%E5%A0%86%E6%A0%88%E5%AF%B9%E6%AF%94">1.2. 堆/栈对比</a></li>
-<li><a href="#13-%E8%87%AA%E7%94%B1%E5%AD%98%E5%82%A8%E5%8C%BA">1.3. 自由存储区</a></li>
+<li><a href="#11-ascii%E6%8E%A7%E5%88%B6%E5%AD%97%E7%AC%A6">1.1. ASCII控制字符</a></li>
+<li><a href="#12-ascii%E5%8F%AF%E6%98%BE%E7%A4%BA%E5%AD%97%E7%AC%A6">1.2. ASCII可显示字符</a></li>
 </ul>
 </li>
-<li><a href="#2-new%E5%92%8Cmalloc%E7%9A%84%E5%8C%BA%E5%88%AB">2. new和malloc的区别</a></li>
-<li><a href="#3-%E5%85%B3%E9%94%AE%E5%AD%97staticconstvolatile">3. 关键字static、const、volatile</a>
+<li><a href="#2-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7%E8%A1%A8">2. 运算符优先级表</a></li>
+<li><a href="#3-%E7%A8%8B%E5%BA%8F%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8">3. 程序虚拟存储器</a>
 <ul>
-<li><a href="#31-static">3.1. static</a>
-<ul>
-<li><a href="#311-%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84static">3.1.1. 面向过程设计中的static</a></li>
+<li><a href="#31-%E5%8F%AA%E8%AF%BB%E5%AD%98%E5%82%A8%E5%8C%BA">3.1. 只读存储区</a></li>
+<li><a href="#32-%E5%A0%86%E6%A0%88%E5%AF%B9%E6%AF%94">3.2. 堆/栈对比</a></li>
+<li><a href="#33-%E8%87%AA%E7%94%B1%E5%AD%98%E5%82%A8%E5%8C%BA">3.3. 自由存储区</a></li>
 </ul>
 </li>
-<li><a href="#32-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84static">3.2. 面向对象设计中的static</a></li>
-<li><a href="#33-const">3.3. const</a>
+<li><a href="#4-new%E5%92%8Cmalloc%E7%9A%84%E5%8C%BA%E5%88%AB">4. new和malloc的区别</a></li>
+<li><a href="#5-%E5%85%B3%E9%94%AE%E5%AD%97staticconstvolatile">5. 关键字static、const、volatile</a>
 <ul>
-<li><a href="#331-const%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F">3.3.1. const修饰成员变量</a></li>
-<li><a href="#332-const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">3.3.2. const修饰函数参数</a></li>
-<li><a href="#333-const%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">3.3.3. const修饰成员函数</a></li>
-<li><a href="#334-const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC">3.3.4. const修饰函数返回值</a></li>
-</ul>
-</li>
-<li><a href="#34-volatile">3.4. volatile</a>
+<li><a href="#51-static">5.1. static</a>
 <ul>
-<li><a href="#341-volatile%E7%9A%84%E4%BD%9C%E7%94%A8">3.4.1. volatile的作用</a></li>
-<li><a href="#342-volatile%E6%8C%87%E9%92%88">3.4.2. volatile指针</a></li>
+<li><a href="#511-%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84static">5.1.1. 面向过程设计中的static</a></li>
 </ul>
 </li>
-<li><a href="#35-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84volatile">3.5. 多线程下的volatile</a></li>
-</ul>
-</li>
-<li><a href="#4-c%E5%92%8Cc%E7%9B%B8%E4%BA%92%E8%B0%83%E7%94%A8">4. C和C++相互调用</a>
+<li><a href="#52-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84static">5.2. 面向对象设计中的static</a></li>
+<li><a href="#53-const">5.3. const</a>
 <ul>
-<li><a href="#41-c%E4%B8%AD%E8%B0%83%E7%94%A8c">4.1. C++中调用C</a></li>
-<li><a href="#42-c%E4%B8%AD%E8%B0%83%E7%94%A8c">4.2. C中调用C++</a></li>
+<li><a href="#531-const%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F">5.3.1. const修饰成员变量</a></li>
+<li><a href="#532-const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">5.3.2. const修饰函数参数</a></li>
+<li><a href="#533-const%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">5.3.3. const修饰成员函数</a></li>
+<li><a href="#534-const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC">5.3.4. const修饰函数返回值</a></li>
 </ul>
 </li>
-<li><a href="#5-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">5. 参考文献</a></li>
+<li><a href="#54-volatile">5.4. volatile</a>
+<ul>
+<li><a href="#541-volatile%E7%9A%84%E4%BD%9C%E7%94%A8">5.4.1. volatile的作用</a></li>
+<li><a href="#542-volatile%E6%8C%87%E9%92%88">5.4.2. volatile指针</a></li>
+</ul>
+</li>
+<li><a href="#55-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84volatile">5.5. 多线程下的volatile</a></li>
+</ul>
+</li>
+<li><a href="#6-c%E5%92%8Cc%E7%9B%B8%E4%BA%92%E8%B0%83%E7%94%A8">6. C和C++相互调用</a>
+<ul>
+<li><a href="#61-c%E4%B8%AD%E8%B0%83%E7%94%A8c">6.1. C++中调用C</a></li>
+<li><a href="#62-c%E4%B8%AD%E8%B0%83%E7%94%A8c">6.2. C中调用C++</a></li>
+</ul>
+</li>
+<li><a href="#7-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">7. 参考文献</a></li>
 </ul>
 <!-- /TOC -->
 <a id="more"></a>
-<h2 id="1-程序虚拟存储器"><a class="markdownIt-Anchor" href="#1-程序虚拟存储器"></a> 1. 程序虚拟存储器</h2>
+<h2 id="1-ascii码表"><a class="markdownIt-Anchor" href="#1-ascii码表"></a> 1. ASCII码表</h2>
+<h3 id="11-ascii控制字符"><a class="markdownIt-Anchor" href="#11-ascii控制字符"></a> 1.1. ASCII控制字符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">二进制</th>
+<th style="text-align:center">十进制</th>
+<th style="text-align:center">十六进制</th>
+<th style="text-align:center">缩写</th>
+<th style="text-align:center">可以显示的表示法</th>
+<th style="text-align:left">名称/意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0000 0000</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">00</td>
+<td style="text-align:center">NUL</td>
+<td style="text-align:center">␀</td>
+<td style="text-align:left">空字符（Null）</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 0001</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">01</td>
+<td style="text-align:center">SOH</td>
+<td style="text-align:center">␁</td>
+<td style="text-align:left">标题开始</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 0010</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">02</td>
+<td style="text-align:center">STX</td>
+<td style="text-align:center">␂</td>
+<td style="text-align:left">本文开始</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 0011</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">03</td>
+<td style="text-align:center">ETX</td>
+<td style="text-align:center">␃</td>
+<td style="text-align:left">本文结束</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 0100</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">04</td>
+<td style="text-align:center">EOT</td>
+<td style="text-align:center">␄</td>
+<td style="text-align:left">传输结束</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 0101</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">05</td>
+<td style="text-align:center">ENQ</td>
+<td style="text-align:center">␅</td>
+<td style="text-align:left">请求</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 0110</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">06</td>
+<td style="text-align:center">ACK</td>
+<td style="text-align:center">␆</td>
+<td style="text-align:left">确认回应</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 0111</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">07</td>
+<td style="text-align:center">BEL</td>
+<td style="text-align:center">␇</td>
+<td style="text-align:left">响铃</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 1000</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">08</td>
+<td style="text-align:center">BS</td>
+<td style="text-align:center">␈</td>
+<td style="text-align:left">退格</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 1001</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">09</td>
+<td style="text-align:center">HT</td>
+<td style="text-align:center">␉</td>
+<td style="text-align:left">水平定位符号</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 1010</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">0A</td>
+<td style="text-align:center">LF</td>
+<td style="text-align:center">␊</td>
+<td style="text-align:left">换行键</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 1011</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">0B</td>
+<td style="text-align:center">VT</td>
+<td style="text-align:center">␋</td>
+<td style="text-align:left">垂直定位符号</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 1100</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">0C</td>
+<td style="text-align:center">FF</td>
+<td style="text-align:center">␌</td>
+<td style="text-align:left">换页键</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 1101</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">0D</td>
+<td style="text-align:center">CR</td>
+<td style="text-align:center">␍</td>
+<td style="text-align:left">归位键</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 1110</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">0E</td>
+<td style="text-align:center">SO</td>
+<td style="text-align:center">␎</td>
+<td style="text-align:left">取消变换（Shift out）</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 1111</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">0F</td>
+<td style="text-align:center">SI</td>
+<td style="text-align:center">␏</td>
+<td style="text-align:left">启用变换（Shift in）</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 0000</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">DLE</td>
+<td style="text-align:center">␐</td>
+<td style="text-align:left">跳出数据通讯</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 0001</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">DC1</td>
+<td style="text-align:center">␑</td>
+<td style="text-align:left">设备控制一（XON 启用软件速度控制）</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 0010</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">DC2</td>
+<td style="text-align:center">␒</td>
+<td style="text-align:left">设备控制二</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 0011</td>
+<td style="text-align:center">19</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">DC3</td>
+<td style="text-align:center">␓</td>
+<td style="text-align:left">设备控制三（XOFF 停用软件速度控制）</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 0100</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">DC4</td>
+<td style="text-align:center">␔</td>
+<td style="text-align:left">设备控制四</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 0101</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">NAK</td>
+<td style="text-align:center">␕</td>
+<td style="text-align:left">确认失败回应</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 0110</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">SYN</td>
+<td style="text-align:center">␖</td>
+<td style="text-align:left">同步用暂停</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 0111</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">ETB</td>
+<td style="text-align:center">␗</td>
+<td style="text-align:left">区块传输结束</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 1000</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">CAN</td>
+<td style="text-align:center">␘</td>
+<td style="text-align:left">取消</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 1001</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">19</td>
+<td style="text-align:center">EM</td>
+<td style="text-align:center">␙</td>
+<td style="text-align:left">连接介质中断</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 1010</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">1A</td>
+<td style="text-align:center">SUB</td>
+<td style="text-align:center">␚</td>
+<td style="text-align:left">替换</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 1011</td>
+<td style="text-align:center">27</td>
+<td style="text-align:center">1B</td>
+<td style="text-align:center">ESC</td>
+<td style="text-align:center">␛</td>
+<td style="text-align:left">跳出</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 1100</td>
+<td style="text-align:center">28</td>
+<td style="text-align:center">1C</td>
+<td style="text-align:center">FS</td>
+<td style="text-align:center">␜</td>
+<td style="text-align:left">文件分割符</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 1101</td>
+<td style="text-align:center">29</td>
+<td style="text-align:center">1D</td>
+<td style="text-align:center">GS</td>
+<td style="text-align:center">␝</td>
+<td style="text-align:left">组群分隔符</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 1110</td>
+<td style="text-align:center">30</td>
+<td style="text-align:center">1E</td>
+<td style="text-align:center">RS</td>
+<td style="text-align:center">␞</td>
+<td style="text-align:left">记录分隔符</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 1111</td>
+<td style="text-align:center">31</td>
+<td style="text-align:center">1F</td>
+<td style="text-align:center">US</td>
+<td style="text-align:center">␟</td>
+<td style="text-align:left">单元分隔符</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 1111</td>
+<td style="text-align:center">127</td>
+<td style="text-align:center">7F</td>
+<td style="text-align:center">DEL</td>
+<td style="text-align:center">␡</td>
+<td style="text-align:left">删除</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-ascii可显示字符"><a class="markdownIt-Anchor" href="#12-ascii可显示字符"></a> 1.2. ASCII可显示字符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">二进制</th>
+<th style="text-align:center">十进制</th>
+<th style="text-align:center">十六进制</th>
+<th style="text-align:center">图形</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0010 0000</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">（空格）(␠)</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 0001</td>
+<td style="text-align:center">33</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">!</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 0010</td>
+<td style="text-align:center">34</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 0011</td>
+<td style="text-align:center">35</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">#</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 0100</td>
+<td style="text-align:center">36</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">$</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 0101</td>
+<td style="text-align:center">37</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">%</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 0110</td>
+<td style="text-align:center">38</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">&amp;</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 0111</td>
+<td style="text-align:center">39</td>
+<td style="text-align:center">27</td>
+<td style="text-align:center">’</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 1000</td>
+<td style="text-align:center">40</td>
+<td style="text-align:center">28</td>
+<td style="text-align:center">(</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 1001</td>
+<td style="text-align:center">41</td>
+<td style="text-align:center">29</td>
+<td style="text-align:center">)</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 1010</td>
+<td style="text-align:center">42</td>
+<td style="text-align:center">2A</td>
+<td style="text-align:center">*</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 1011</td>
+<td style="text-align:center">43</td>
+<td style="text-align:center">2B</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 1100</td>
+<td style="text-align:center">44</td>
+<td style="text-align:center">2C</td>
+<td style="text-align:center">,</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 1101</td>
+<td style="text-align:center">45</td>
+<td style="text-align:center">2D</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 1110</td>
+<td style="text-align:center">46</td>
+<td style="text-align:center">2E</td>
+<td style="text-align:center">.</td>
+</tr>
+<tr>
+<td style="text-align:center">0010 1111</td>
+<td style="text-align:center">47</td>
+<td style="text-align:center">2F</td>
+<td style="text-align:center">/</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 0000</td>
+<td style="text-align:center">48</td>
+<td style="text-align:center">30</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 0001</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">31</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 0010</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 0011</td>
+<td style="text-align:center">51</td>
+<td style="text-align:center">33</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 0100</td>
+<td style="text-align:center">52</td>
+<td style="text-align:center">34</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 0101</td>
+<td style="text-align:center">53</td>
+<td style="text-align:center">35</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 0110</td>
+<td style="text-align:center">54</td>
+<td style="text-align:center">36</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 0111</td>
+<td style="text-align:center">55</td>
+<td style="text-align:center">37</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 1000</td>
+<td style="text-align:center">56</td>
+<td style="text-align:center">38</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 1001</td>
+<td style="text-align:center">57</td>
+<td style="text-align:center">39</td>
+<td style="text-align:center">9</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 1010</td>
+<td style="text-align:center">58</td>
+<td style="text-align:center">3A</td>
+<td style="text-align:center">:</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 1011</td>
+<td style="text-align:center">59</td>
+<td style="text-align:center">3B</td>
+<td style="text-align:center">;</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 1100</td>
+<td style="text-align:center">60</td>
+<td style="text-align:center">3C</td>
+<td style="text-align:center">&lt;</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 1101</td>
+<td style="text-align:center">61</td>
+<td style="text-align:center">3D</td>
+<td style="text-align:center">=</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 1110</td>
+<td style="text-align:center">62</td>
+<td style="text-align:center">3E</td>
+<td style="text-align:center">&gt;</td>
+</tr>
+<tr>
+<td style="text-align:center">0011 1111</td>
+<td style="text-align:center">63</td>
+<td style="text-align:center">3F</td>
+<td style="text-align:center">?</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 0000</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">40</td>
+<td style="text-align:center">@</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 0001</td>
+<td style="text-align:center">65</td>
+<td style="text-align:center">41</td>
+<td style="text-align:center">A</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 0010</td>
+<td style="text-align:center">66</td>
+<td style="text-align:center">42</td>
+<td style="text-align:center">B</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 0011</td>
+<td style="text-align:center">67</td>
+<td style="text-align:center">43</td>
+<td style="text-align:center">C</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 0100</td>
+<td style="text-align:center">68</td>
+<td style="text-align:center">44</td>
+<td style="text-align:center">D</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 0101</td>
+<td style="text-align:center">69</td>
+<td style="text-align:center">45</td>
+<td style="text-align:center">E</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 0110</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">46</td>
+<td style="text-align:center">F</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 0111</td>
+<td style="text-align:center">71</td>
+<td style="text-align:center">47</td>
+<td style="text-align:center">G</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 1000</td>
+<td style="text-align:center">72</td>
+<td style="text-align:center">48</td>
+<td style="text-align:center">H</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 1001</td>
+<td style="text-align:center">73</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">I</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 1010</td>
+<td style="text-align:center">74</td>
+<td style="text-align:center">4A</td>
+<td style="text-align:center">J</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 1011</td>
+<td style="text-align:center">75</td>
+<td style="text-align:center">4B</td>
+<td style="text-align:center">K</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 1100</td>
+<td style="text-align:center">76</td>
+<td style="text-align:center">4C</td>
+<td style="text-align:center">L</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 1101</td>
+<td style="text-align:center">77</td>
+<td style="text-align:center">4D</td>
+<td style="text-align:center">M</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 1110</td>
+<td style="text-align:center">78</td>
+<td style="text-align:center">4E</td>
+<td style="text-align:center">N</td>
+</tr>
+<tr>
+<td style="text-align:center">0100 1111</td>
+<td style="text-align:center">79</td>
+<td style="text-align:center">4F</td>
+<td style="text-align:center">O</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 0000</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">P</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 0001</td>
+<td style="text-align:center">81</td>
+<td style="text-align:center">51</td>
+<td style="text-align:center">Q</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 0010</td>
+<td style="text-align:center">82</td>
+<td style="text-align:center">52</td>
+<td style="text-align:center">R</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 0011</td>
+<td style="text-align:center">83</td>
+<td style="text-align:center">53</td>
+<td style="text-align:center">S</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 0100</td>
+<td style="text-align:center">84</td>
+<td style="text-align:center">54</td>
+<td style="text-align:center">T</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 0101</td>
+<td style="text-align:center">85</td>
+<td style="text-align:center">55</td>
+<td style="text-align:center">U</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 0110</td>
+<td style="text-align:center">86</td>
+<td style="text-align:center">56</td>
+<td style="text-align:center">V</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 0111</td>
+<td style="text-align:center">87</td>
+<td style="text-align:center">57</td>
+<td style="text-align:center">W</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 1000</td>
+<td style="text-align:center">88</td>
+<td style="text-align:center">58</td>
+<td style="text-align:center">X</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 1001</td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">59</td>
+<td style="text-align:center">Y</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 1010</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">5A</td>
+<td style="text-align:center">Z</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 1011</td>
+<td style="text-align:center">91</td>
+<td style="text-align:center">5B</td>
+<td style="text-align:center">[</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 1100</td>
+<td style="text-align:center">92</td>
+<td style="text-align:center">5C</td>
+<td style="text-align:center">\</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 1101</td>
+<td style="text-align:center">93</td>
+<td style="text-align:center">5D</td>
+<td style="text-align:center">]</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 1110</td>
+<td style="text-align:center">94</td>
+<td style="text-align:center">5E</td>
+<td style="text-align:center">^</td>
+</tr>
+<tr>
+<td style="text-align:center">0101 1111</td>
+<td style="text-align:center">95</td>
+<td style="text-align:center">5F</td>
+<td style="text-align:center">_</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 0000</td>
+<td style="text-align:center">96</td>
+<td style="text-align:center">60</td>
+<td style="text-align:center">`</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 0001</td>
+<td style="text-align:center">97</td>
+<td style="text-align:center">61</td>
+<td style="text-align:center">a</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 0010</td>
+<td style="text-align:center">98</td>
+<td style="text-align:center">62</td>
+<td style="text-align:center">b</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 0011</td>
+<td style="text-align:center">99</td>
+<td style="text-align:center">63</td>
+<td style="text-align:center">c</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 0100</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">d</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 0101</td>
+<td style="text-align:center">101</td>
+<td style="text-align:center">65</td>
+<td style="text-align:center">e</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 0110</td>
+<td style="text-align:center">102</td>
+<td style="text-align:center">66</td>
+<td style="text-align:center">f</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 0111</td>
+<td style="text-align:center">103</td>
+<td style="text-align:center">67</td>
+<td style="text-align:center">g</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 1000</td>
+<td style="text-align:center">104</td>
+<td style="text-align:center">68</td>
+<td style="text-align:center">h</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 1001</td>
+<td style="text-align:center">105</td>
+<td style="text-align:center">69</td>
+<td style="text-align:center">i</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 1010</td>
+<td style="text-align:center">106</td>
+<td style="text-align:center">6A</td>
+<td style="text-align:center">j</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 1011</td>
+<td style="text-align:center">107</td>
+<td style="text-align:center">6B</td>
+<td style="text-align:center">k</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 1100</td>
+<td style="text-align:center">108</td>
+<td style="text-align:center">6C</td>
+<td style="text-align:center">l</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 1101</td>
+<td style="text-align:center">109</td>
+<td style="text-align:center">6D</td>
+<td style="text-align:center">m</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 1110</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">6E</td>
+<td style="text-align:center">n</td>
+</tr>
+<tr>
+<td style="text-align:center">0110 1111</td>
+<td style="text-align:center">111</td>
+<td style="text-align:center">6F</td>
+<td style="text-align:center">o</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 0000</td>
+<td style="text-align:center">112</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">p</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 0001</td>
+<td style="text-align:center">113</td>
+<td style="text-align:center">71</td>
+<td style="text-align:center">q</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 0010</td>
+<td style="text-align:center">114</td>
+<td style="text-align:center">72</td>
+<td style="text-align:center">r</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 0011</td>
+<td style="text-align:center">115</td>
+<td style="text-align:center">73</td>
+<td style="text-align:center">s</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 0100</td>
+<td style="text-align:center">116</td>
+<td style="text-align:center">74</td>
+<td style="text-align:center">t</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 0101</td>
+<td style="text-align:center">117</td>
+<td style="text-align:center">75</td>
+<td style="text-align:center">u</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 0110</td>
+<td style="text-align:center">118</td>
+<td style="text-align:center">76</td>
+<td style="text-align:center">v</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 0111</td>
+<td style="text-align:center">119</td>
+<td style="text-align:center">77</td>
+<td style="text-align:center">w</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 1000</td>
+<td style="text-align:center">120</td>
+<td style="text-align:center">78</td>
+<td style="text-align:center">x</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 1001</td>
+<td style="text-align:center">121</td>
+<td style="text-align:center">79</td>
+<td style="text-align:center">y</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 1010</td>
+<td style="text-align:center">122</td>
+<td style="text-align:center">7A</td>
+<td style="text-align:center">z</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 1011</td>
+<td style="text-align:center">123</td>
+<td style="text-align:center">7B</td>
+<td style="text-align:center">{</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 1100</td>
+<td style="text-align:center">124</td>
+<td style="text-align:center">7C</td>
+<td style="text-align:center">|</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 1101</td>
+<td style="text-align:center">125</td>
+<td style="text-align:center">7D</td>
+<td style="text-align:center">}</td>
+</tr>
+<tr>
+<td style="text-align:center">0111 1110</td>
+<td style="text-align:center">126</td>
+<td style="text-align:center">7E</td>
+<td style="text-align:center">~</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-运算符优先级表"><a class="markdownIt-Anchor" href="#2-运算符优先级表"></a> 2. 运算符优先级表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">优先级</th>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">名称或含义</th>
+<th>使用形式</th>
+<th style="text-align:center">结合方向</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">[]</td>
+<td style="text-align:center">数组下标</td>
+<td>数组名[常量表达式]</td>
+<td style="text-align:center">左到右</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">()</td>
+<td style="text-align:center">圆括号</td>
+<td>（表达式）/函数名(形参表)</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">成员选择（对象）</td>
+<td>对象.成员名</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">-&gt;</td>
+<td style="text-align:center">成员选择（指针）</td>
+<td>对象指针-&gt;成员名</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">负号运算符</td>
+<td>-表达式</td>
+<td style="text-align:center">右到左</td>
+<td>单目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">(类型)</td>
+<td style="text-align:center">强制类型转换</td>
+<td>(数据类型)表达式</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">++</td>
+<td style="text-align:center">自增运算符</td>
+<td>++ 变量名/变量名++</td>
+<td style="text-align:center">…</td>
+<td>单目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">自减运算符</td>
+<td>–变量名/变量名–</td>
+<td style="text-align:center">…</td>
+<td>单目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">*</td>
+<td style="text-align:center">取值运算符</td>
+<td>*指针变量</td>
+<td style="text-align:center">…</td>
+<td>单目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center">取地址运算符</td>
+<td>&amp;变量名</td>
+<td style="text-align:center">…</td>
+<td>单目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">!</td>
+<td style="text-align:center">逻辑非运算符</td>
+<td>!表达式</td>
+<td style="text-align:center">…</td>
+<td>单目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">~</td>
+<td style="text-align:center">按位取反运算符</td>
+<td>~表达式</td>
+<td style="text-align:center">…</td>
+<td>单目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">sizeof</td>
+<td style="text-align:center">长度运算符</td>
+<td>sizeof(表达式)</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">/</td>
+<td style="text-align:center">除</td>
+<td>表达式/表达式</td>
+<td style="text-align:center">左到右</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">*</td>
+<td style="text-align:center">乘</td>
+<td>表达式*表达式</td>
+<td style="text-align:center">…</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">%</td>
+<td style="text-align:center">余数（取模）</td>
+<td>整型表达式/整型表达式</td>
+<td style="text-align:center">…</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">加</td>
+<td>表达式+表达式</td>
+<td style="text-align:center">左到右</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">减</td>
+<td>表达式-表达式</td>
+<td style="text-align:center">…</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">&lt;&lt;</td>
+<td style="text-align:center">左移</td>
+<td>变量&lt;&lt;表达式</td>
+<td style="text-align:center">左到右</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">&gt;&gt;</td>
+<td style="text-align:center">右移</td>
+<td>变量&gt;&gt;表达式</td>
+<td style="text-align:center">…</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">大于</td>
+<td>表达式&gt;表达式</td>
+<td style="text-align:center">左到右</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">&gt;=</td>
+<td style="text-align:center">大于等于</td>
+<td>表达式&gt;=表达式</td>
+<td style="text-align:center">…</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">小于</td>
+<td>表达式&lt;表达式</td>
+<td style="text-align:center">…</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">&lt;=</td>
+<td style="text-align:center">小于等于</td>
+<td>表达式&lt;=表达式</td>
+<td style="text-align:center">…</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">==</td>
+<td style="text-align:center">等于</td>
+<td>表达式==表达式</td>
+<td style="text-align:center">左到右</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">!=</td>
+<td style="text-align:center">不等于</td>
+<td>表达式!= 表达式</td>
+<td style="text-align:center">…</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center">按位与</td>
+<td>表达式&amp;表达式</td>
+<td style="text-align:center">左到右</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">^</td>
+<td style="text-align:center">按位异或</td>
+<td>表达式^表达式</td>
+<td style="text-align:center">左到右</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">|</td>
+<td style="text-align:center">按位或</td>
+<td>表达式|表达式</td>
+<td style="text-align:center">左到右</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">&amp;&amp;</td>
+<td style="text-align:center">逻辑与</td>
+<td>表达式&amp;&amp;表达式</td>
+<td style="text-align:center">左到右</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">||</td>
+<td style="text-align:center">逻辑或</td>
+<td>表达式||表达式</td>
+<td style="text-align:center">左到右</td>
+<td>双目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">?:</td>
+<td style="text-align:center">条件运算符</td>
+<td>表达式1? 表达式2: 表达式3</td>
+<td style="text-align:center">右到左</td>
+<td>三目运算符</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">=</td>
+<td style="text-align:center">赋值运算符</td>
+<td>变量=表达式</td>
+<td style="text-align:center">右到左</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">/=</td>
+<td style="text-align:center">除后赋值</td>
+<td>变量/=表达式</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">*=</td>
+<td style="text-align:center">乘后赋值</td>
+<td>变量*=表达式</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">%=</td>
+<td style="text-align:center">取模后赋值</td>
+<td>变量%=表达式</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">+=</td>
+<td style="text-align:center">加后赋值</td>
+<td>变量+=表达式</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">-=</td>
+<td style="text-align:center">减后赋值</td>
+<td>变量-=表达式</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">&lt;&lt;=</td>
+<td style="text-align:center">左移后赋值</td>
+<td>变量&lt;&lt;=表达式</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">&gt;&gt;=</td>
+<td style="text-align:center">右移后赋值</td>
+<td>变量&gt;&gt;=表达式</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">&amp;=</td>
+<td style="text-align:center">按位与后赋值</td>
+<td>变量&amp;=表达式</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">^=</td>
+<td style="text-align:center">按位异或后赋值</td>
+<td>变量^=表达式</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">|=</td>
+<td style="text-align:center">按位或后赋值</td>
+<td>变量|=表达式</td>
+<td style="text-align:center">…</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">,</td>
+<td style="text-align:center">逗号运算符</td>
+<td>表达式,表达式,…</td>
+<td style="text-align:center">左到右</td>
+<td>从左向右顺序运算</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-程序虚拟存储器"><a class="markdownIt-Anchor" href="#3-程序虚拟存储器"></a> 3. 程序虚拟存储器</h2>
 <p><img src="%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8.png" alt="进程虚拟存储器" /></p>
-<h3 id="11-只读存储区"><a class="markdownIt-Anchor" href="#11-只读存储区"></a> 1.1. 只读存储区</h3>
+<h3 id="31-只读存储区"><a class="markdownIt-Anchor" href="#31-只读存储区"></a> 3.1. 只读存储区</h3>
 <p>只读存储区是在编译阶段就由编译器分配好的空间，其空间大小也在编译的时候已经固定，主要包括如下分区：</p>
 <ul>
 <li>
@@ -274,7 +1511,7 @@
 <p>包含为初始化的全局变量和静态变量，并且以0填充变量数值，程序结束后由系统释放资源。</p>
 </li>
 </ul>
-<h3 id="12-堆栈对比"><a class="markdownIt-Anchor" href="#12-堆栈对比"></a> 1.2. 堆/栈对比</h3>
+<h3 id="32-堆栈对比"><a class="markdownIt-Anchor" href="#32-堆栈对比"></a> 3.2. 堆/栈对比</h3>
 <table>
 <thead>
 <tr>
@@ -316,14 +1553,14 @@
 </tr>
 </tbody>
 </table>
-<h3 id="13-自由存储区"><a class="markdownIt-Anchor" href="#13-自由存储区"></a> 1.3. 自由存储区</h3>
+<h3 id="33-自由存储区"><a class="markdownIt-Anchor" href="#33-自由存储区"></a> 3.3. 自由存储区</h3>
 <p>自由存储区是C++上为new方法提供的一个抽象概念，具体对应的存储区域取决于编译器对于new方法的实现，自由存储区可能是映射到堆，也可能是映射到静态存储区，甚至可能不会重新分配内存，而仅仅只是将<code>定位new</code>所指定的地址返回，对于绝大部分的编译器来说，都是借助malloc来实现new操作符的功能，此时，自由存储区就是堆，而开发者可以通过重载操作符的方式重载new，此时就要依据开发者的实现来决定自由存储所对应的存储区域，例如如下的<a href="https://blog.csdn.net/zhangxiangDavaid/article/details/43899351"><code>定位new表达式</code></a>就是仅仅返回已定义的空间地址，而没有重新分配地址，具体可参考<a href="#2-new%E5%92%8Cmalloc%E7%9A%84%E5%8C%BA%E5%88%AB">new和malloc的区别</a>。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> addr1[<span class="number">100</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> addr2[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">char</span> *addr3 = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">100</span>];</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;addr1 = &quot;</span> &lt;&lt; (<span class="keyword">void</span>*)addr1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;addr2 = &quot;</span> &lt;&lt; (<span class="keyword">void</span>*)addr2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;addr3 = &quot;</span> &lt;&lt; (<span class="keyword">void</span>*)addr3 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">int</span> *p = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="comment">// 返回静态区地址，并按地址右侧数据类型初始化该区域</span></span><br><span class="line">	p = <span class="keyword">new</span>(addr1)<span class="keyword">int</span>;</span><br><span class="line">	*p = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; (<span class="keyword">void</span>*)p &lt;&lt; <span class="string">&quot;  &quot;</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="comment">// 返回栈区地址，并按地址右侧数据类型初始化该区域</span></span><br><span class="line">	p = <span class="keyword">new</span>(addr2)<span class="keyword">int</span>;</span><br><span class="line">	*p = <span class="number">2</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; (<span class="keyword">void</span>*)p &lt;&lt; <span class="string">&quot;  &quot;</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="comment">//返回堆区地址，并按地址右侧数据类型初始化该区域</span></span><br><span class="line">	p = <span class="keyword">new</span>(addr3)<span class="keyword">int</span>;</span><br><span class="line">	*p = <span class="number">3</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; (<span class="keyword">void</span>*)p &lt;&lt; <span class="string">&quot;  &quot;</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cin</span>.get();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-new和malloc的区别"><a class="markdownIt-Anchor" href="#2-new和malloc的区别"></a> 2. new和malloc的区别</h2>
+<h2 id="4-new和malloc的区别"><a class="markdownIt-Anchor" href="#4-new和malloc的区别"></a> 4. new和malloc的区别</h2>
 <p><a href="https://www.cnblogs.com/qg-whz/p/5140930.html">细说new与malloc的10点区别</a></p>
-<h2 id="3-关键字static-const-volatile"><a class="markdownIt-Anchor" href="#3-关键字static-const-volatile"></a> 3. 关键字static、const、volatile</h2>
-<h3 id="31-static"><a class="markdownIt-Anchor" href="#31-static"></a> 3.1. static</h3>
-<h4 id="311-面向过程设计中的static"><a class="markdownIt-Anchor" href="#311-面向过程设计中的static"></a> 3.1.1. 面向过程设计中的static</h4>
+<h2 id="5-关键字static-const-volatile"><a class="markdownIt-Anchor" href="#5-关键字static-const-volatile"></a> 5. 关键字static、const、volatile</h2>
+<h3 id="51-static"><a class="markdownIt-Anchor" href="#51-static"></a> 5.1. static</h3>
+<h4 id="511-面向过程设计中的static"><a class="markdownIt-Anchor" href="#511-面向过程设计中的static"></a> 5.1.1. 面向过程设计中的static</h4>
 <ol>
 <li>
 <p>静态全局变量</p>
@@ -389,7 +1626,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="32-面向对象设计中的static"><a class="markdownIt-Anchor" href="#32-面向对象设计中的static"></a> 3.2. 面向对象设计中的static</h3>
+<h3 id="52-面向对象设计中的static"><a class="markdownIt-Anchor" href="#52-面向对象设计中的static"></a> 5.2. 面向对象设计中的static</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Myclass</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"> 　　Myclass(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c);</span><br><span class="line"> 　　<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">GetSum</span><span class="params">()</span></span>; <span class="comment">// 声明静态成员函数</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"> 　　<span class="keyword">int</span> a,b,c;</span><br><span class="line"> 　　<span class="keyword">static</span> <span class="keyword">int</span> Sum; <span class="comment">// 声明静态数据成员</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> Myclass::Sum=<span class="number">0</span>; <span class="comment">// 定义并初始化静态数据成员</span></span><br><span class="line"></span><br><span class="line">Myclass::Myclass(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span><br><span class="line">&#123;</span><br><span class="line"> 　　<span class="keyword">this</span>-&gt;a=a;</span><br><span class="line"> 　　<span class="keyword">this</span>-&gt;b=b;</span><br><span class="line"> 　　<span class="keyword">this</span>-&gt;c=c;</span><br><span class="line"> 　　Sum+=a+b+c; <span class="comment">// 非静态成员函数可以访问静态数据成员</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Myclass::GetSum</span><span class="params">()</span> <span class="comment">// 静态成员函数的实现</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// cout&lt;&lt;a&lt;&lt;endl; // 错误代码，a是非静态数据成员</span></span><br><span class="line"> 　　<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Sum=&quot;</span>&lt;&lt;Sum&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> 　　<span class="function">Myclass <span class="title">M</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span></span>;</span><br><span class="line"> 　　M.GetSum();</span><br><span class="line">　　 <span class="function">Myclass <span class="title">N</span><span class="params">(<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span></span>;</span><br><span class="line"> 　　N.GetSum();</span><br><span class="line"> 　　M.GetSum();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol>
 <li>
@@ -412,9 +1649,9 @@
 </ul>
 </li>
 </ol>
-<h3 id="33-const"><a class="markdownIt-Anchor" href="#33-const"></a> 3.3. const</h3>
+<h3 id="53-const"><a class="markdownIt-Anchor" href="#53-const"></a> 5.3. const</h3>
 <p>const 允许指定一个语义约束，编译器会强制实施这个约束，允许程序员告诉编译器某值是保持不变的。如果在编程中确实有某个值保持不变，就应该明确使用const，这样可以获得编译器的帮助。</p>
-<h4 id="331-const修饰成员变量"><a class="markdownIt-Anchor" href="#331-const修饰成员变量"></a> 3.3.1. const修饰成员变量</h4>
+<h4 id="531-const修饰成员变量"><a class="markdownIt-Anchor" href="#531-const修饰成员变量"></a> 5.3.1. const修饰成员变量</h4>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a1=<span class="number">3</span>;                   <span class="comment">//non-const data</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> a2=a1;            <span class="comment">//const data</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> * a3 = &amp;a1;             <span class="comment">//non-const data,non-const pointer</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> * a4 = &amp;a1;       <span class="comment">//const data,non-const pointer</span></span><br><span class="line">    <span class="keyword">int</span> * <span class="keyword">const</span> a5 = &amp;a1;       <span class="comment">//non-const data,const pointer</span></span><br><span class="line">    <span class="keyword">int</span> <span class="keyword">const</span> * <span class="keyword">const</span> a6 = &amp;a1; <span class="comment">//const data,const pointer</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> a7 = &amp;a1; <span class="comment">//const data,const pointer</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>const修饰指针变量时：</p>
 <ol>
@@ -422,16 +1659,16 @@
 <li>只有一个const，如果const位于*右侧，表示指针本身是常量，不能指向其他内存地址；指针所指的数据可以通过解引用修改。</li>
 <li>两个const，*左右各一个，表示指针和指针所指数据都不能修改。</li>
 </ol>
-<h4 id="332-const修饰函数参数"><a class="markdownIt-Anchor" href="#332-const修饰函数参数"></a> 3.3.2. const修饰函数参数</h4>
+<h4 id="532-const修饰函数参数"><a class="markdownIt-Anchor" href="#532-const修饰函数参数"></a> 5.3.2. const修饰函数参数</h4>
 <p>传递过来的参数在函数内不可以改变，与上面修饰变量时的性质一样。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testModifyConst</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> _x)</span> </span>&#123;</span><br><span class="line">     _x=<span class="number">5</span>;　　　<span class="comment">//编译出错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="333-const修饰成员函数"><a class="markdownIt-Anchor" href="#333-const修饰成员函数"></a> 3.3.3. const修饰成员函数</h4>
+<h4 id="533-const修饰成员函数"><a class="markdownIt-Anchor" href="#533-const修饰成员函数"></a> 5.3.3. const修饰成员函数</h4>
 <ol>
 <li>const修饰的成员函数不能修改任何的成员变量(mutable修饰的变量除外)</li>
 <li>const成员函数不能调用非onst成员函数，因为非const成员函数可以会修改成员变量</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span> :</span><br><span class="line">    Point(<span class="keyword">int</span> _x):x(_x)&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testConstFunction</span><span class="params">(<span class="keyword">int</span> _x)</span> <span class="keyword">const</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//错误，在const成员函数中，不能修改任何类成员变量</span></span><br><span class="line">        x=_x;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//错误，const成员函数不能调用非onst成员函数，因为非const成员函数可以会修改成员变量</span></span><br><span class="line">        modify_x(_x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">modify_x</span><span class="params">(<span class="keyword">int</span> _x)</span></span>&#123;</span><br><span class="line">        x=_x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="334-const修饰函数返回值"><a class="markdownIt-Anchor" href="#334-const修饰函数返回值"></a> 3.3.4. const修饰函数返回值</h4>
+<h4 id="534-const修饰函数返回值"><a class="markdownIt-Anchor" href="#534-const修饰函数返回值"></a> 5.3.4. const修饰函数返回值</h4>
 <ol>
 <li>
 <p>指针传递</p>
@@ -449,8 +1686,8 @@
 <p>在编程中要尽可能多的使用const，这样可以获得编译器的帮助，以便写出健壮性的代码。</p>
 </li>
 </ol>
-<h3 id="34-volatile"><a class="markdownIt-Anchor" href="#34-volatile"></a> 3.4. volatile</h3>
-<h4 id="341-volatile的作用"><a class="markdownIt-Anchor" href="#341-volatile的作用"></a> 3.4.1. volatile的作用</h4>
+<h3 id="54-volatile"><a class="markdownIt-Anchor" href="#54-volatile"></a> 5.4. volatile</h3>
+<h4 id="541-volatile的作用"><a class="markdownIt-Anchor" href="#541-volatile的作用"></a> 5.4.1. volatile的作用</h4>
 <p>volatile关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素更改，比如：操作系统、硬件或者其它线程等。由于访问寄存器的速度要快过RAM，所以编译器一般都会作减少存取外部RAM的优化。遇到这个关键字声明的变量，编译器对访问该变量的代码就不再进行优化，从而可以提供对特殊地址的稳定访问。<strong>当要求使用 volatile 声明的变量的值的时候，系统总是重新从它所在的内存读取数据，即使它前面的指令刚刚从该处读取过数据。而且读取的数据立刻被保存</strong>。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> a = i;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;i = %d&quot;</span>, a);</span><br><span class="line">    <span class="comment">// 下面汇编语句的作用就是改变内存中 i 的值</span></span><br><span class="line">    <span class="comment">// 但是又不让编译器知道</span></span><br><span class="line">    __asm &#123;</span><br><span class="line">        mov dword ptr [ebp<span class="number">-4</span>], <span class="number">20</span>h</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> b = i;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;i = %d&quot;</span>, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后，在 Debug 版本模式运行程序，输出结果如下：</p>
@@ -471,7 +1708,7 @@ i = 10
 <li><strong>多任务环境下各任务间共享的标志应该加volatile</strong></li>
 <li><strong>存储器映射的硬件寄存器通常也要加volatile说明，因为每次对它的读写都可能由不同意义</strong></li>
 </ol>
-<h4 id="342-volatile指针"><a class="markdownIt-Anchor" href="#342-volatile指针"></a> 3.4.2. volatile指针</h4>
+<h4 id="542-volatile指针"><a class="markdownIt-Anchor" href="#542-volatile指针"></a> 5.4.2. volatile指针</h4>
 <p>和 const 修饰词类似，const 有常量指针和指针常量的说法，volatile 也有相应的概念：</p>
 <ul>
 <li>修饰由指针指向的对象、数据是 const 或 volatile 的：</li>
@@ -487,7 +1724,7 @@ i = 10
 <li><strong>除了基本类型外，对用户定义类型也可以用volatile类型进行修饰</strong></li>
 <li><strong>C++中一个有volatile标识符的类只能访问它接口的子集，一个由类的实现者控制的子集。用户只能用const_cast来获得对类型接口的完全访问。此外，volatile向const一样会从类传递到它的成员</strong></li>
 </ol>
-<h3 id="35-多线程下的volatile"><a class="markdownIt-Anchor" href="#35-多线程下的volatile"></a> 3.5. 多线程下的volatile</h3>
+<h3 id="55-多线程下的volatile"><a class="markdownIt-Anchor" href="#55-多线程下的volatile"></a> 5.5. 多线程下的volatile</h3>
 <p>有些变量是用volatile关键字声明的。当两个线程都要用到某一个变量且该变量的值会被改变时，应该用volatile声明，该关键字的作用是防止优化编译器把变量从内存装入CPU寄存器中。如果变量被装入寄存器，那么两个线程有可能一个使用内存中的变量，一个使用寄存器中的变量，这会造成程序的错误执行。volatile的意思是让编译器每次操作该变量时一定要从内存中真正取出，而不是使用已经存在寄存器中的值，如下：</p>
 <blockquote>
 <p>volatile  BOOL  bStop  =  FALSE;</p>
@@ -496,10 +1733,10 @@ i = 10
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(  !bStop  )  &#123;  ...  &#125;</span><br><span class="line">bStop  =  FALSE;</span><br><span class="line"><span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
 <p>(2) 在另外一个线程中，要终止上面的线程循环：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bStop  =  TRUE;</span><br><span class="line"><span class="keyword">while</span>(  bStop  );  <span class="comment">//等待上面的线程终止，如果bStop不使用volatile申明，那么这个循环将是一个死循环，因为bStop已经读取到了寄存器中，寄存器中bStop的值永远不会变成FALSE，加上volatile，程序在执行时，每次均从内存中读出bStop的值，就不会死循环了。</span></span><br></pre></td></tr></table></figure>
-<h2 id="4-c和c相互调用"><a class="markdownIt-Anchor" href="#4-c和c相互调用"></a> 4. C和C++相互调用</h2>
-<h3 id="41-c中调用c"><a class="markdownIt-Anchor" href="#41-c中调用c"></a> 4.1. C++中调用C</h3>
-<h3 id="42-c中调用c"><a class="markdownIt-Anchor" href="#42-c中调用c"></a> 4.2. C中调用C++</h3>
-<h2 id="5-参考文献"><a class="markdownIt-Anchor" href="#5-参考文献"></a> 5. 参考文献</h2>
+<h2 id="6-c和c相互调用"><a class="markdownIt-Anchor" href="#6-c和c相互调用"></a> 6. C和C++相互调用</h2>
+<h3 id="61-c中调用c"><a class="markdownIt-Anchor" href="#61-c中调用c"></a> 6.1. C++中调用C</h3>
+<h3 id="62-c中调用c"><a class="markdownIt-Anchor" href="#62-c中调用c"></a> 6.2. C中调用C++</h3>
+<h2 id="7-参考文献"><a class="markdownIt-Anchor" href="#7-参考文献"></a> 7. 参考文献</h2>
 <p>[1] <a href="https://blog.csdn.net/K346K346/article/details/46448255">C/C++文字常量与常变量</a></p>
 
       
@@ -561,15 +1798,16 @@ i = 10
           <li>
             <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://cyriltaylor.github.io/posts/1473815809/&title=《C++进阶》 — 敛聪存慧&source=
 
-1. 程序虚拟存储器
+1. ASCII码表
 
-1.1. 只读存储区
-1.2. 堆/栈对比
-1.3. 自由存储区
+1.1. ASCII控制字符
+1.2. ASCII可显示字符
 
 
-2. new和malloc的区别
-3. 关键字stati..." data-title="QQ">
+2. 运算符优先级表
+3. 程序虚拟存储器
+
+3.1. 只读..." data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
@@ -621,7 +1859,7 @@ i = 10
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-%E7%A8%8B%E5%BA%8F%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="post-toc-text"> 1. 程序虚拟存储器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-%E5%8F%AA%E8%AF%BB%E5%AD%98%E5%82%A8%E5%8C%BA"><span class="post-toc-text"> 1.1. 只读存储区</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-%E5%A0%86%E6%A0%88%E5%AF%B9%E6%AF%94"><span class="post-toc-text"> 1.2. 堆&#x2F;栈对比</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-%E8%87%AA%E7%94%B1%E5%AD%98%E5%82%A8%E5%8C%BA"><span class="post-toc-text"> 1.3. 自由存储区</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-new%E5%92%8Cmalloc%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> 2. new和malloc的区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-%E5%85%B3%E9%94%AE%E5%AD%97static-const-volatile"><span class="post-toc-text"> 3. 关键字static、const、volatile</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#31-static"><span class="post-toc-text"> 3.1. static</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#311-%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84static"><span class="post-toc-text"> 3.1.1. 面向过程设计中的static</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#32-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84static"><span class="post-toc-text"> 3.2. 面向对象设计中的static</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#33-const"><span class="post-toc-text"> 3.3. const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#331-const%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="post-toc-text"> 3.3.1. const修饰成员变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#332-const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="post-toc-text"> 3.3.2. const修饰函数参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#333-const%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="post-toc-text"> 3.3.3. const修饰成员函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#334-const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="post-toc-text"> 3.3.4. const修饰函数返回值</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#34-volatile"><span class="post-toc-text"> 3.4. volatile</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#341-volatile%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 3.4.1. volatile的作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#342-volatile%E6%8C%87%E9%92%88"><span class="post-toc-text"> 3.4.2. volatile指针</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#35-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84volatile"><span class="post-toc-text"> 3.5. 多线程下的volatile</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-c%E5%92%8Cc%E7%9B%B8%E4%BA%92%E8%B0%83%E7%94%A8"><span class="post-toc-text"> 4. C和C++相互调用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#41-c%E4%B8%AD%E8%B0%83%E7%94%A8c"><span class="post-toc-text"> 4.1. C++中调用C</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#42-c%E4%B8%AD%E8%B0%83%E7%94%A8c"><span class="post-toc-text"> 4.2. C中调用C++</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="post-toc-text"> 5. 参考文献</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-ascii%E7%A0%81%E8%A1%A8"><span class="post-toc-text"> 1. ASCII码表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-ascii%E6%8E%A7%E5%88%B6%E5%AD%97%E7%AC%A6"><span class="post-toc-text"> 1.1. ASCII控制字符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-ascii%E5%8F%AF%E6%98%BE%E7%A4%BA%E5%AD%97%E7%AC%A6"><span class="post-toc-text"> 1.2. ASCII可显示字符</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7%E8%A1%A8"><span class="post-toc-text"> 2. 运算符优先级表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-%E7%A8%8B%E5%BA%8F%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="post-toc-text"> 3. 程序虚拟存储器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#31-%E5%8F%AA%E8%AF%BB%E5%AD%98%E5%82%A8%E5%8C%BA"><span class="post-toc-text"> 3.1. 只读存储区</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#32-%E5%A0%86%E6%A0%88%E5%AF%B9%E6%AF%94"><span class="post-toc-text"> 3.2. 堆&#x2F;栈对比</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#33-%E8%87%AA%E7%94%B1%E5%AD%98%E5%82%A8%E5%8C%BA"><span class="post-toc-text"> 3.3. 自由存储区</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-new%E5%92%8Cmalloc%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="post-toc-text"> 4. new和malloc的区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-%E5%85%B3%E9%94%AE%E5%AD%97static-const-volatile"><span class="post-toc-text"> 5. 关键字static、const、volatile</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#51-static"><span class="post-toc-text"> 5.1. static</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#511-%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84static"><span class="post-toc-text"> 5.1.1. 面向过程设计中的static</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#52-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84static"><span class="post-toc-text"> 5.2. 面向对象设计中的static</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#53-const"><span class="post-toc-text"> 5.3. const</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#531-const%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="post-toc-text"> 5.3.1. const修饰成员变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#532-const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="post-toc-text"> 5.3.2. const修饰函数参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#533-const%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="post-toc-text"> 5.3.3. const修饰成员函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#534-const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="post-toc-text"> 5.3.4. const修饰函数返回值</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#54-volatile"><span class="post-toc-text"> 5.4. volatile</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#541-volatile%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="post-toc-text"> 5.4.1. volatile的作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#542-volatile%E6%8C%87%E9%92%88"><span class="post-toc-text"> 5.4.2. volatile指针</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#55-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84volatile"><span class="post-toc-text"> 5.5. 多线程下的volatile</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-c%E5%92%8Cc%E7%9B%B8%E4%BA%92%E8%B0%83%E7%94%A8"><span class="post-toc-text"> 6. C和C++相互调用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#61-c%E4%B8%AD%E8%B0%83%E7%94%A8c"><span class="post-toc-text"> 6.1. C++中调用C</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#62-c%E4%B8%AD%E8%B0%83%E7%94%A8c"><span class="post-toc-text"> 6.2. C中调用C++</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="post-toc-text"> 7. 参考文献</span></a></li></ol>
         </nav>
     </aside>
     
@@ -748,9 +1986,9 @@ i = 10
             <i class="icon icon-lg icon-chevron-left"></i>
         </a>
         <input class="search-field" placeholder="Search..." id="keywords">
-        <a id="search-submit" href="javascript:;">
+        <!-- <a id="search-submit" href="javascript:;">
             <i class="fa fa-search"></i>
-        </a>
+        </a> -->
     <div class="search-container" id="search-container">
         <ul class="search-result" id="search-result">
         </ul>
