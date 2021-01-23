@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Flutter基础教程 | 敛聪存慧</title>
+  <title>VMware虚拟机安装Ubuntu Server 18.04 | 敛聪存慧</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Cyril Taylor,cyriltaylor,hexo,blog" />
   
   <meta property="og:type" content="article">
-<meta property="og:title" content="Flutter基础教程">
-<meta property="og:url" content="https://cyriltaylor.github.io/posts/777259726/index.html">
+<meta property="og:title" content="VMware虚拟机安装Ubuntu Server 18.04">
+<meta property="og:url" content="https://cyriltaylor.github.io/vmlinux">
 <meta property="og:site_name" content="敛聪存慧">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-10-05T17:07:25.000Z">
-<meta property="article:modified_time" content="2020-09-19T15:59:33.000Z">
+<meta property="article:published_time" content="2020-03-19T06:45:27.000Z">
+<meta property="article:modified_time" content="2021-01-23T20:37:31.000Z">
 <meta property="article:author" content="Cyril Taylor">
 <meta name="twitter:card" content="summary">
   
@@ -24,17 +24,17 @@
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css">
   
-<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="css/style.css">
 
   
-<script src="../../js/pace.min.js"></script>
+<script src="js/pace.min.js"></script>
 
   
 
   
   
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-xonokai.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -44,22 +44,22 @@
     <div id="header-outer">
         <div id="header-menu" class="header-menu-pos animated">
             <div class="header-menu-container">
-                <a href="../../index.html" class="left">
+                <a href="index.html" class="left">
                     <span class="site-title">积慧</span>
                 </a>
                 <nav id="header-menu-nav" class="right">
                     
-                    <a  href="../../index.html">
+                    <a  href="index.html">
                         <i class="fa fa-home"></i>
                         <span>主页</span>
                     </a>
                     
-                    <a  href="../../archives">
+                    <a  href="/archives">
                         <i class="fa fa-archive"></i>
                         <span>归档</span>
                     </a>
                     
-                    <a  href="../../about">
+                    <a  href="/about">
                         <i class="fa fa-user"></i>
                         <span>关于</span>
                     </a>
@@ -72,8 +72,8 @@
         </div>
         <div id="header-row">
             <div id="logo">
-                <a href="../../index.html">
-                    <img src="../../images/logo.webp" alt="logo" width="130px" height="130px">
+                <a href="index.html">
+                    <img src="images/logo.webp" alt="logo" width="130px" height="130px">
                 </a>
             </div>
             <div class="header-info">
@@ -101,13 +101,13 @@
             <nav class="header-nav">
                 <div class="social">
                     
-                        <a title="Github" target="_blank" href="../../github.com/CyrilTaylor">
+                        <a title="Github" target="_blank" href="/github.com/CyrilTaylor">
                             <i class="fa fa-github fa-2x"></i></a>
                     
-                        <a title="微博" target="_blank" href="../../www.weibo.com/CyrilTaylor">
+                        <a title="微博" target="_blank" href="/www.weibo.com/CyrilTaylor">
                             <i class="fa fa-weibo fa-2x"></i></a>
                     
-                        <a title="邮箱"  href="../../mailto:CyrilTaylor@foxmail.com">
+                        <a title="邮箱"  href="mailto:CyrilTaylor@foxmail.com">
                             <i class="fa fa-envelope fa-2x"></i></a>
                     
                 </div>
@@ -116,20 +116,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-Flutter/Flutter基础教程" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-Tools/VMware虚拟机安装UbuntuServer18.04" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      <span class="article-type type-original">原</span>Flutter基础教程
+      <span class="article-type type-original">原</span>VMware虚拟机安装Ubuntu Server 18.04
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2019-10-06
+          <i class="fa fa-calendar"></i>  2020-03-19
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -139,15 +139,19 @@
     </div>
     <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2020年09月19日 15:59</p>
+        <p>最后更新： 2021年01月23日 20:37</p>
 
             <p>版权声明：本文为<a href="https://cyriltaylor.github.io">Cyril Taylor</a>原创文章，遵循<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0 BY-SA </a>版权协议，转载请附上原文出处链接和本声明。</p>
 
-        <p>本文链接： <a class="post-url" href="" title="Flutter基础教程">https://cyriltaylor.github.io/posts/777259726/</a></p>
+        <p>本文链接： <a class="post-url" href="/vmlinux" title="VMware虚拟机安装Ubuntu Server 18.04">https://cyriltaylor.github.io/vmlinux</a></p>
         <footer>
 
+
+
+
+
             <a href="https://cyriltaylor.github.io">
-                <img src="../../images/logo.webp" alt="Cyril Taylor">
+                <img src="images/logo.webp" alt="Cyril Taylor">
                 Cyril Taylor
             </a>
         </footer>
@@ -180,17 +184,17 @@
     <div class="reward-content">
         
         <div class="reward-code">
-            <img id="rewardCode" src="../../images/wechat_code.webp" alt="打赏二维码" width="300" height="300">
+            <img id="rewardCode" src="images/wechat_code.webp" alt="打赏二维码" width="300" height="300">
         </div>
         <div class="reward-select">
             
-            <label class="reward-select-item checked" data-id="wechat" data-wechat="../../images/wechat_code.webp">
-                <img class="reward-select-item-wechat" src="../../images/wechat.png" alt="微信">
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="images/wechat_code.webp">
+                <img class="reward-select-item-wechat" src="images/wechat.png" alt="微信">
             </label>
             
             
-            <label class="reward-select-item" data-id="alipay" data-alipay="../../images/alipay_code.webp">
-                <img class="reward-select-item-alipay" src="../../images/alipay.png" alt="支付宝">
+            <label class="reward-select-item" data-id="alipay" data-alipay="images/alipay_code.webp">
+                <img class="reward-select-item-alipay" src="images/alipay.png" alt="支付宝">
             </label>
             
         </div>
@@ -210,7 +214,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://cyriltaylor.github.io/posts/777259726/&title=《Flutter基础教程》 — 敛聪存慧&pic=flutter.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://cyriltaylor.github.io/vmlinux&title=《VMware虚拟机安装Ubuntu Server 18.04》 — 敛聪存慧&pic=https://cyriltaylor.github.ioimages/logo.webp" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -220,22 +224,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://cyriltaylor.github.io/posts/777259726/&title=《Flutter基础教程》 — 敛聪存慧&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://cyriltaylor.github.io/vmlinux&title=《VMware虚拟机安装Ubuntu Server 18.04》 — 敛聪存慧&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://cyriltaylor.github.io/posts/777259726/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://cyriltaylor.github.io/vmlinux" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter基础教程》 — 敛聪存慧&url=https://cyriltaylor.github.io/posts/777259726/&via=https://cyriltaylor.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VMware虚拟机安装Ubuntu Server 18.04》 — 敛聪存慧&url=https://cyriltaylor.github.io/vmlinux&via=https://cyriltaylor.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://cyriltaylor.github.io/posts/777259726/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://cyriltaylor.github.io/vmlinux" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -245,7 +249,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://cyriltaylor.github.io/posts/777259726/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://cyriltaylor.github.io/vmlinux" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -264,19 +268,19 @@
 
 <nav id="article-nav">
   
-    <a href="../441574646/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="posts/3958140669/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          斯坦福大学2014(吴恩达)机器学习教程中文笔记
+          十二种常用排序算法（冒泡、插入、归并、快速排序等包含希尔和计数排序）
         
       </span>
     </a>
   
   
-    <a href="../1940182387/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">开源项目推荐</span>
+    <a href="posts/3374613233/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">软件推荐</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
@@ -305,7 +309,7 @@
       <p>
         Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
         Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
-      &copy; 2020 Cyril Taylor<br>
+      &copy; 2021 Cyril Taylor<br>
       </p>
     </div>
   </div>
@@ -338,10 +342,10 @@
 <div class="sidebar-menu-box" id="sidebar-menu-box">
     <div class="sidebar-menu-box-container">
         <div id="sidebar-menu-box-categories">
-            <a class="category-link" href="../../categories/C-C/">C/C++</a><a class="category-link" href="../../categories/Java/">Java</a><a class="category-link" href="../../categories/Kotlin/">Kotlin</a><a class="category-link" href="../../categories/Linux/">Linux</a><a class="category-link" href="../../categories/shell/">shell</a><a class="category-link" href="../../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="category-link" href="../../categories/%E7%AE%97%E6%B3%95/">算法</a>
+            <a class="category-link" href="categories/C-C/">C/C++</a><a class="category-link" href="categories/Java/">Java</a><a class="category-link" href="categories/Kotlin/">Kotlin</a><a class="category-link" href="categories/Linux/">Linux</a><a class="category-link" href="categories/Tools/">Tools</a><a class="category-link" href="categories/shell/">shell</a><a class="category-link" href="categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="category-link" href="categories/%E7%AE%97%E6%B3%95/">算法</a><a class="category-link" href="categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/">排序</a>
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="../../tags/C-C/" style="font-size: 16.67px;">C/C++</a> <a href="../../tags/GPIO/" style="font-size: 10px;">GPIO</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Kernel/" style="font-size: 10px;">Kernel</a> <a href="../../tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="../../tags/Linux/" style="font-size: 20px;">Linux</a> <a href="../../tags/Linux%E9%A9%B1%E5%8A%A8/" style="font-size: 10px;">Linux驱动</a> <a href="../../tags/Pinctrl/" style="font-size: 10px;">Pinctrl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/kernel-API/" style="font-size: 10px;">kernel API</a> <a href="../../tags/shell/" style="font-size: 13.33px;">shell</a> <a href="../../tags/zsh/" style="font-size: 10px;">zsh</a> <a href="../../tags/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" style="font-size: 10px;">华为机试</a> <a href="../../tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="../../tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="../../tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="../../tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="../../tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">编程技巧</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="../../tags/%E8%AE%BE%E5%A4%87%E6%A0%91/" style="font-size: 10px;">设备树</a> <a href="../../tags/%E9%A2%98%E5%BA%93/" style="font-size: 10px;">题库</a> <a href="../../tags/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" style="font-size: 13.33px;">高级特性</a>
+            <a href="tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="tags/GPIO/" style="font-size: 10px;">GPIO</a> <a href="tags/Java/" style="font-size: 10px;">Java</a> <a href="tags/Kernel/" style="font-size: 10px;">Kernel</a> <a href="tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="tags/Linux/" style="font-size: 20px;">Linux</a> <a href="tags/Linux%E9%A9%B1%E5%8A%A8/" style="font-size: 10px;">Linux驱动</a> <a href="tags/Pinctrl/" style="font-size: 10px;">Pinctrl</a> <a href="tags/Python/" style="font-size: 10px;">Python</a> <a href="tags/Tools/" style="font-size: 10px;">Tools</a> <a href="tags/git/" style="font-size: 10px;">git</a> <a href="tags/kernel-API/" style="font-size: 10px;">kernel API</a> <a href="tags/shell/" style="font-size: 15px;">shell</a> <a href="tags/zsh/" style="font-size: 10px;">zsh</a> <a href="tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a> <a href="tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="tags/%E8%AE%BE%E5%A4%87%E6%A0%91/" style="font-size: 10px;">设备树</a> <a href="tags/%E9%A2%9C%E8%89%B2%E5%8D%A1/" style="font-size: 10px;">颜色卡</a> <a href="tags/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" style="font-size: 15px;">高级特性</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -352,19 +356,19 @@
         <ul class="mobile-header-menu-navbar">
             
             <li>
-                <a  href="../../index.html">
+                <a  href="index.html">
                     <i class="fa fa-home"></i><span>主页</span>
                 </a>
             </li>
             
             <li>
-                <a  href="../../archives">
+                <a  href="/archives">
                     <i class="fa fa-archive"></i><span>归档</span>
                 </a>
             </li>
             
             <li>
-                <a  href="../../about">
+                <a  href="/about">
                     <i class="fa fa-user"></i><span>关于</span>
                 </a>
             </li>
@@ -374,7 +378,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="../../tags/C-C/" style="font-size: 16.67px;">C/C++</a> <a href="../../tags/GPIO/" style="font-size: 10px;">GPIO</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Kernel/" style="font-size: 10px;">Kernel</a> <a href="../../tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="../../tags/Linux/" style="font-size: 20px;">Linux</a> <a href="../../tags/Linux%E9%A9%B1%E5%8A%A8/" style="font-size: 10px;">Linux驱动</a> <a href="../../tags/Pinctrl/" style="font-size: 10px;">Pinctrl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/kernel-API/" style="font-size: 10px;">kernel API</a> <a href="../../tags/shell/" style="font-size: 13.33px;">shell</a> <a href="../../tags/zsh/" style="font-size: 10px;">zsh</a> <a href="../../tags/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/" style="font-size: 10px;">华为机试</a> <a href="../../tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="../../tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="../../tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="../../tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="../../tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">编程技巧</a> <a href="../../tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="../../tags/%E8%AE%BE%E5%A4%87%E6%A0%91/" style="font-size: 10px;">设备树</a> <a href="../../tags/%E9%A2%98%E5%BA%93/" style="font-size: 10px;">题库</a> <a href="../../tags/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" style="font-size: 13.33px;">高级特性</a>
+            <a href="tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="tags/GPIO/" style="font-size: 10px;">GPIO</a> <a href="tags/Java/" style="font-size: 10px;">Java</a> <a href="tags/Kernel/" style="font-size: 10px;">Kernel</a> <a href="tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="tags/Linux/" style="font-size: 20px;">Linux</a> <a href="tags/Linux%E9%A9%B1%E5%8A%A8/" style="font-size: 10px;">Linux驱动</a> <a href="tags/Pinctrl/" style="font-size: 10px;">Pinctrl</a> <a href="tags/Python/" style="font-size: 10px;">Python</a> <a href="tags/Tools/" style="font-size: 10px;">Tools</a> <a href="tags/git/" style="font-size: 10px;">git</a> <a href="tags/kernel-API/" style="font-size: 10px;">kernel API</a> <a href="tags/shell/" style="font-size: 15px;">shell</a> <a href="tags/zsh/" style="font-size: 10px;">zsh</a> <a href="tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a> <a href="tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="tags/%E8%AE%BE%E5%A4%87%E6%A0%91/" style="font-size: 10px;">设备树</a> <a href="tags/%E9%A2%9C%E8%89%B2%E5%8D%A1/" style="font-size: 10px;">颜色卡</a> <a href="tags/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" style="font-size: 15px;">高级特性</a>
         </div>
     </div>
 </div>
@@ -401,17 +405,17 @@
     </li>
 </div>
 
-<script src="../../js/search.js"></script>
+<script src="js/search.js"></script>
 
 
-<script src="../../js/main.js"></script>
+<script src="js/main.js"></script>
 
 
 
   <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
   <div id="particles"></div>
   
-<script src="../../js/particles.js"></script>
+<script src="js/particles.js"></script>
 
 
 
@@ -421,16 +425,16 @@
 
 
   
-<link rel="stylesheet" href="../../cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+<link rel="stylesheet" href="/cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
 
   <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
   
-<script src="../../js/animate.js"></script>
+<script src="js/animate.js"></script>
 
 
 
   
-<script src="../../js/pop-img.js"></script>
+<script src="js/pop-img.js"></script>
 
   <script>
      $(".article-entry p img").popImg();
